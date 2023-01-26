@@ -72,5 +72,10 @@ class Kota extends BaseController
 
     	return redirect()->to(base_url().'/kota/edit/'.$id);
     }
+
+    public function delete($id){
+        $this->kotaModel->delete($id);
+        return redirect()->to(base_url().'/kota');
+    }
 }
 

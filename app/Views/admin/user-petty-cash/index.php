@@ -34,15 +34,15 @@
                       <tbody>
                           <?php 
                             $i=1;
-                            foreach($kota as $k) :?>
+                            foreach($data as $dt) :?>
                           <tr>
                             <td><?php echo $i++; ?></td>
-                            <td><?php echo $k['kota'] ?></td>
-                            <td><?php echo $k['created_at'] ?></td>
-                            <td><?php echo $k['updated_at'] ?></td>
+                            <td><?php echo $dt['nama'] ?></td>
+                            <td><?php echo $dt['created_at'] ?></td>
+                            <td><?php echo $dt['updated_at'] ?></td>
                             <td class="row-actions">
-                              <a href="<?php echo base_url().'/kota/edit/'.$k['id_kota']; ?>"><i class="os-icon os-icon-ui-49"></i></a>
-                              <form action="<?php echo base_url().'/kota/'.$k['id_kota']; ?>" method="post" class="form-action-table">
+                              <a href="<?php echo base_url().'/'.$app.'/edit/'.$dt['id_user_petty_cash']; ?>"><i class="os-icon os-icon-ui-49"></i></a>
+                              <form action="<?php echo base_url().'/'.$app.'/'.$dt['id_user_petty_cash']; ?>" method="post" class="form-action-table">
                                 <?php echo csrf_field(); ?>
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button class="no-style-btn danger" type="submit" onClick="return confirm('Apakah anda yakin menghapus data ini?')"><i class="os-icon os-icon-ui-15"></i></button>  

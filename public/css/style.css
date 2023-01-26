@@ -1,0 +1,9 @@
+.form-action-table {display: inline;}
+
+button.no-style-btn {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+}
+button.danger{color: #9d1818;}

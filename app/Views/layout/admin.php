@@ -19,6 +19,7 @@
     <link href="<?php echo base_url(); ?>/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>/bower_components/slick-carousel/slick/slick.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>/css/main.css?version=4.5.0" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>/css/style.css?version=1.0" rel="stylesheet">
   </head>
   <body class="menu-position-side menu-side-left full-screen">
     <div class="all-wrapper solid-bg-all">
@@ -152,7 +153,7 @@
         -------------------->
         <div class="menu-mobile menu-activated-on-click color-scheme-dark">
           <div class="mm-logo-buttons-w">
-            <a class="mm-logo" href="index.html"><img src="<?php echo base_url(); ?>/img/logo.png"><span>Clean Admin</span></a>
+            <a class="mm-logo" href="index.html"><img src="<?php echo base_url(); ?>/img/logo.png"><span>Pondok Lensa</span></a>
             <div class="mm-buttons">
               <div class="content-panel-open">
                 <div class="os-icon os-icon-grid-circles"></div>
@@ -188,61 +189,58 @@
                   <span>Master</span></a>
                 <ul class="sub-menu">
                   <li>
-                    <a href="index.html">City</a>
+                    <a href="/kota">City</a>
                   </li>
                   <li>
-                    <a href="apps_crypto.html">Area</a>
+                    <a href="/area">Area</a>
                   </li>
                   <li>
-                    <a href="apps_support_dashboard.html">Site</a>
+                    <a href="/site">Site</a>
                   </li>
                   <li>
-                    <a href="apps_projects.html">Petty Cash</a>
-                  </li>
-                  <li>
-                    <a href="apps_bank.html">Group Petty Cash</a>
+                    <a href="/petty-cash-group">Petty Cash Group</a>
                   </li>
                 </ul>
               </li>
 
               <li class="has-sub-menu">
-                <a href="index.html">
+                <a href="/record-petty-cash">
                   <div class="icon-w">
                     <div class="os-icon os-icon-layout"></div>
                   </div>
                   <span>Record</span></a>
                 <ul class="sub-menu">
                   <li>
-                    <a href="index.html">Petty Cash</a>
+                    <a href="/record-petty-cash">Petty Cash</a>
                   </li>
                 </ul>
               </li>
 
               <li class="has-sub-menu">
-                <a href="index.html">
+                <a href="/report-petty-cash">
                   <div class="icon-w">
                     <div class="os-icon os-icon-layout"></div>
                   </div>
                   <span>Report</span></a>
                 <ul class="sub-menu">
                   <li>
-                    <a href="index.html">Petty Cash</a>
+                    <a href="/report-petty-cash">Petty Cash</a>
                   </li>
                 </ul>
               </li>
 
               <li class="has-sub-menu">
-                <a href="index.html">
+                <a href="/user-petty-cash">
                   <div class="icon-w">
                     <div class="os-icon os-icon-layout"></div>
                   </div>
                   <span>User</span></a>
                 <ul class="sub-menu">
                   <li>
-                    <a href="index.html">User</a>
+                    <a href="/user-petty-cash">User</a>
                   </li>
                   <li>
-                    <a href="apps_crypto.html">Group Users</a>
+                    <a href="/user-group">User Group</a>
                   </li>
                 </ul>
               </li>
@@ -316,47 +314,117 @@
             <li class="sub-header">
               <span>Master</span>
             </li> 
-            <li>
-              <a href="index.html">
+
+
+
+            <li class="has-sub-menu">
+              <a href="/kota">
                 <div class="icon-w">
                   <div class="os-icon os-icon-layout"></div>
                 </div>
-                <span>City</span></a>              
+                <span>Kota</span></a>
+              <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                  Kota
+                </div>
+                <div class="sub-menu-icon">
+                  <i class="os-icon os-icon-layout"></i>
+                </div>
+                <div class="sub-menu-i">
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="/kota">Data Kota</a>
+                    </li>
+                    <li>
+                      <a href="/kota/create">Tambah Kota Baru</a>
+                    </li>                    
+                  </ul>
+                </div>
+              </div>
+
             </li> 
-            <li>
-              <a href="index.html">
+            <li class="has-sub-menu">
+              <a href="/area">
                 <div class="icon-w">
                   <div class="os-icon os-icon-layout"></div>
                 </div>
                 <span>Area</span></a>              
+              <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                  Area
+                </div>
+                <div class="sub-menu-icon">
+                  <i class="os-icon os-icon-layout"></i>
+                </div>
+                <div class="sub-menu-i">
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="/area">Data Area</a>
+                    </li>
+                    <li>
+                      <a href="/area/create">Tambah Area Baru</a>
+                    </li>                    
+                  </ul>
+                </div>
+              </div>
             </li>
-            <li>
-              <a href="index.html">
+            <li class="has-sub-menu">
+              <a href="/site">
                 <div class="icon-w">
                   <div class="os-icon os-icon-layout"></div>
                 </div>
-                <span>Site</span></a>              
+                <span>Site</span></a>
+              <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                  Site
+                </div>
+                <div class="sub-menu-icon">
+                  <i class="os-icon os-icon-layout"></i>
+                </div>
+                <div class="sub-menu-i">
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="/site">Data Site</a>
+                    </li>
+                    <li>
+                      <a href="/site/create">Tambah Site Baru</a>
+                    </li>                    
+                  </ul>
+                </div>
+              </div>              
             </li>
-            <li>
-              <a href="index.html">
+            <li class="has-sub-menu">
+              <a href="/petty-cash-group">
                 <div class="icon-w">
                   <div class="os-icon os-icon-layout"></div>
                 </div>
-                <span>Petty Cash</span></a>              
-            </li>
-            <li>
-              <a href="index.html">
-                <div class="icon-w">
-                  <div class="os-icon os-icon-layout"></div>
+                <span>Petty Cash Group</span></a> 
+
+              <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                  Petty Cash Group
                 </div>
-                <span>Group Petty Cash</span></a>              
+                <div class="sub-menu-icon">
+                  <i class="os-icon os-icon-layout"></i>
+                </div>
+                <div class="sub-menu-i">
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="/petty-cash-group">Data Petty Cash Group</a>
+                    </li>
+                    <li>
+                      <a href="/petty-cash-group/create">Tambah Petty Cash Group Baru</a>
+                    </li>                    
+                  </ul>
+                </div>
+              </div>              
             </li>
 
             <li class="sub-header">
               <span>Record</span>
             </li>
             <li>
-              <a href="index.html">
+              <a href="/record-petty-cash">
                 <div class="icon-w">
                   <div class="os-icon os-icon-layout"></div>
                 </div>
@@ -367,7 +435,7 @@
               <span>Report</span>
             </li>
             <li>
-              <a href="index.html">
+              <a href="/report-petty-cash">
                 <div class="icon-w">
                   <div class="os-icon os-icon-layout"></div>
                 </div>
@@ -377,19 +445,55 @@
             <li class="sub-header">
               <span>User</span>
             </li>
-            <li>
-              <a href="index.html">
+            <li class="has-sub-menu">
+              <a href="/user-petty-cash">
                 <div class="icon-w">
                   <div class="os-icon os-icon-layout"></div>
                 </div>
-                <span>User</span></a>              
+                <span>User</span></a>
+              <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                  User
+                </div>
+                <div class="sub-menu-icon">
+                  <i class="os-icon os-icon-layout"></i>
+                </div>
+                <div class="sub-menu-i">
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="/user-petty-cash">Data User</a>
+                    </li>
+                    <li>
+                      <a href="/user-petty-cash/create">Tambah User Baru</a>
+                    </li>                    
+                  </ul>
+                </div>
+              </div>              
             </li>  
-            <li>
-              <a href="index.html">
+            <li class="has-sub-menu">
+              <a href="/user-group">
                 <div class="icon-w">
                   <div class="os-icon os-icon-layout"></div>
                 </div>
-                <span>Group Users</span></a>              
+                <span>User Group</span></a>
+              <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                  User Group
+                </div>
+                <div class="sub-menu-icon">
+                  <i class="os-icon os-icon-layout"></i>
+                </div>
+                <div class="sub-menu-i">
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="/user-group">Data User Group</a>
+                    </li>
+                    <li>
+                      <a href="/user-group/create">Tambah User Group Baru</a>
+                    </li>                    
+                  </ul>
+                </div>
+              </div>             
             </li>
           </ul>
         </div>
@@ -513,6 +617,7 @@
     <script src="<?php echo base_url(); ?>/js/dataTables.bootstrap4.min.js"></script>
     <script src="<?php echo base_url(); ?>/js/demo_customizer.js?version=4.5.0"></script>
     <script src="<?php echo base_url(); ?>/js/main.js?version=4.5.0"></script>
+    <script src="<?php echo base_url(); ?>/js/script.js?version=1.0"></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

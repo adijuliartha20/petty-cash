@@ -29,7 +29,6 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
 $routes->get('/coba', 'Coba::index');
 $routes->get('/users', 'Admin\Users::index');
 
@@ -37,11 +36,46 @@ $routes->get('/kota/edit/(:segment)', 'Admin\Kota::edit/$1');
 $routes->get('/kota/create', 'Admin\Kota::create');
 $routes->post('/kota/save', 'Admin\Kota::save');
 $routes->post('/kota/update', 'Admin\Kota::update');
+$routes->delete('/kota/(:num)', 'Admin\Kota::delete/$1');
 $routes->get('/kota', 'Admin\Kota::index');
 
+$routes->get('/area/edit/(:segment)', 'Admin\Area::edit/$1');
+$routes->get('/area/create', 'Admin\Area::create');
+$routes->post('/area/save', 'Admin\Area::save');
+$routes->post('/area/update', 'Admin\Area::update');
+$routes->delete('/area/(:num)', 'Admin\Area::delete/$1');
+$routes->get('/area', 'Admin\Area::index');
+
+$routes->get('/site/edit/(:segment)', 'Admin\Site::edit/$1');
+$routes->get('/site/create', 'Admin\Site::create');
+$routes->post('/site/save', 'Admin\Site::save');
+$routes->post('/site/update', 'Admin\Site::update');
+$routes->delete('/site/(:num)', 'Admin\Site::delete/$1');
+$routes->get('/site', 'Admin\Site::index');
+
+$routes->get('/user-group/edit/(:segment)', 'Admin\UserGroup::edit/$1');
+$routes->get('/user-group/create', 'Admin\UserGroup::create');
+$routes->post('/user-group/save', 'Admin\UserGroup::save');
+$routes->post('/user-group/update', 'Admin\UserGroup::update');
+$routes->delete('/user-group/(:num)', 'Admin\UserGroup::delete/$1');
+$routes->get('/user-group', 'Admin\UserGroup::index');
+
+$routes->get('/petty-cash-group/edit/(:segment)', 'Admin\PettyCashGroup::edit/$1');
+$routes->get('/petty-cash-group/create', 'Admin\PettyCashGroup::create');
+$routes->post('/petty-cash-group/save', 'Admin\PettyCashGroup::save');
+$routes->post('/petty-cash-group/update', 'Admin\PettyCashGroup::update');
+$routes->delete('/petty-cash-group/(:num)', 'Admin\PettyCashGroup::delete/$1');
+$routes->get('/petty-cash-group', 'Admin\PettyCashGroup::index');
+
+$routes->get('/user-petty-cash/edit/(:segment)', 'Admin\UserPettyCash::edit/$1');
+$routes->get('/user-petty-cash/create', 'Admin\UserPettyCash::create');
+$routes->post('/user-petty-cash/save', 'Admin\UserPettyCash::save');
+$routes->post('/user-petty-cash/update', 'Admin\UserPettyCash::update');
+$routes->delete('/user-petty-cash/(:num)', 'Admin\UserPettyCash::delete/$1');
+$routes->get('/user-petty-cash', 'Admin\UserPettyCash::index');
 
 
-
+$routes->get('/', 'Home::index');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
