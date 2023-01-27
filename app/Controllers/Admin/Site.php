@@ -32,7 +32,9 @@ class Site extends BaseController
     		'title' => 'Tambah Site',
     		'action' => base_url().'/site/save',
             'dt' => [],
-            'kota' => $this->kotaModel->getKota()
+            'kota' => $this->kotaModel->getKota(),
+            'area' => [],
+            'ajax' => base_url()
     	];
     	return view('admin/site/edit',$data);
     }
@@ -79,12 +81,15 @@ class Site extends BaseController
     }
 
     public function edit($slug){
+        $dt = $this->siteModel->getData($slug);
 
     	$data = [
     		'title' => 'Edit Site',
     		'action' => base_url().'/site/update',    		
-    		'dt'=> $this->siteModel->getData($slug),
-            'kota' => $this->kotaModel->getKota()
+    		'dt'=> $dt,
+            'kota' => $this->kotaModel->getKota(),
+            'area' => $this->areaModel->getListArea($dt['id_kota']),
+            'ajax' => base_url()
     	];
 
     	if(empty($data['dt'])){

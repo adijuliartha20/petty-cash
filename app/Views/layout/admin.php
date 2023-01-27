@@ -184,7 +184,7 @@
               <li class="has-sub-menu">
                 <a href="/record-petty-cash">
                   <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-folder"></div>
                   </div>
                   <span>Record</span></a>
                 <ul class="sub-menu">
@@ -202,7 +202,7 @@
               <li class="has-sub-menu">
                 <a href="/report-petty-cash">
                   <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-file-text"></div>
                   </div>
                   <span>Report</span></a>
                 <ul class="sub-menu">
@@ -235,7 +235,7 @@
               <li class="has-sub-menu">
                 <a href="/user-petty-cash">
                   <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-user"></div>
                   </div>
                   <span>User</span></a>
                 <ul class="sub-menu">
@@ -320,14 +320,14 @@
             <li>
               <a href="/record-klaim">
                 <div class="icon-w">
-                  <div class="os-icon os-icon-layout"></div>
+                  <div class="os-icon os-icon-folder"></div>
                 </div>
                 <span>Klaim</span></a>              
             </li>
             <li class="has-sub-menu">
               <a href="/record-reimburse">
                 <div class="icon-w">
-                  <div class="os-icon os-icon-layout"></div>
+                  <div class="os-icon os-icon-folder"></div>
                 </div>
                 <span>Reimburse</span></a>
               <div class="sub-menu-w">
@@ -335,7 +335,7 @@
                   Reimburse
                 </div>
                 <div class="sub-menu-icon">
-                  <i class="os-icon os-icon-layout"></i>
+                  <i class="os-icon os-icon-folder"></i>
                 </div>
                 <div class="sub-menu-i">
                   <ul class="sub-menu">
@@ -352,7 +352,7 @@
             <li class="has-sub-menu">
               <a href="/record-kas">
                 <div class="icon-w">
-                  <div class="os-icon os-icon-layout"></div>
+                  <div class="os-icon os-icon-folder"></div>
                 </div>
                 <span>Kas</span></a>
               <div class="sub-menu-w">
@@ -360,7 +360,7 @@
                   Kas
                 </div>
                 <div class="sub-menu-icon">
-                  <i class="os-icon os-icon-layout"></i>
+                  <i class="os-icon os-icon-folder"></i>
                 </div>
                 <div class="sub-menu-i">
                   <ul class="sub-menu">
@@ -381,7 +381,7 @@
             <li>
               <a href="/report-petty-cash">
                 <div class="icon-w">
-                  <div class="os-icon os-icon-layout"></div>
+                  <div class="os-icon os-icon-file-text"></div>
                 </div>
                 <span>Petty Cash</span></a>              
             </li>
@@ -503,7 +503,7 @@
             <li class="has-sub-menu">
               <a href="/user-petty-cash">
                 <div class="icon-w">
-                  <div class="os-icon os-icon-layout"></div>
+                  <div class="os-icon os-icon-user"></div>
                 </div>
                 <span>User</span></a>
               <div class="sub-menu-w">
@@ -511,7 +511,7 @@
                   User
                 </div>
                 <div class="sub-menu-icon">
-                  <i class="os-icon os-icon-layout"></i>
+                  <i class="os-icon os-icon-user"></i>
                 </div>
                 <div class="sub-menu-i">
                   <ul class="sub-menu">
@@ -528,7 +528,7 @@
             <li class="has-sub-menu">
               <a href="/user-group">
                 <div class="icon-w">
-                  <div class="os-icon os-icon-layout"></div>
+                  <div class="os-icon os-icon-users"></div>
                 </div>
                 <span>User Group</span></a>
               <div class="sub-menu-w">
@@ -536,7 +536,7 @@
                   User Group
                 </div>
                 <div class="sub-menu-icon">
-                  <i class="os-icon os-icon-layout"></i>
+                  <i class="os-icon os-icon-users"></i>
                 </div>
                 <div class="sub-menu-i">
                   <ul class="sub-menu">

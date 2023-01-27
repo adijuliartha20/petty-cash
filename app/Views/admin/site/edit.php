@@ -20,7 +20,8 @@
             </div>
             <div class="form-group">
               <label for="">Kota</label>
-              <select class="form-control" name="id_kota">
+              <select class="form-control" name="id_kota" required="required" onChange="getArea(event)">
+                <option value="">Silahkan pilih kota</option>
                 <?php 
                   $id_kota = '';
                   if(isset($dt['id_kota'])) $id_kota = $dt['id_kota'];
@@ -34,11 +35,22 @@
             </div>
             <div class="form-group">
               <label for="">Area</label>
-              <select class="form-control" name="id_area"></select>
+              <select class="form-control" name="id_area" id="area">
+                 <?php 
+                  $id_area = '';
+                    if(isset($dt['id_area'])) $id_area = $dt['id_area'];
+                  ?>
+                  <?php foreach ($area as $a):?>
+                    <option <?php echo ($a['id_area']==$id_area? 'selected':'') ?>  value="<?php echo $a['id_area']; ?>">
+                      <?php echo $a['area']; ?>
+                    </option>
+                  <?php endforeach; ?> 
+              </select>
             </div>
             <div class="form-buttons-w">
               <button class="btn btn-primary" type="submit">Simpan</button>
             </div>
+            <input type="hidden" id="act" value="<?php echo $ajax; ?>">
             <?php if(isset($dt['id_site'])): ?>
               <input type="hidden" name="id" value="<?php echo $dt['id_site']; ?>">
             <?php endif;?>

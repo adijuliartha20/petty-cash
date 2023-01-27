@@ -31,7 +31,7 @@ class AreaModel extends Model
     }
 
     public function getListArea($slug){
-        return $this->where('id_kota',$slug)->findAll();
+        return $this->select('id_area,area')->where('id_kota',$slug)->findAll();
     }
 
 }

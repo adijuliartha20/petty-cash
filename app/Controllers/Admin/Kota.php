@@ -10,6 +10,7 @@ class Kota extends BaseController
 	protected $kotaModel;
 	public function __construct(){
 		$this->kotaModel = new KotaModel();
+        $this->appName = 'kota';
 	}
 
     public function index()
@@ -33,6 +34,18 @@ class Kota extends BaseController
 
     public function save(){
     	$slug = url_title($this->request->getVar('kota'),'-',true);
+        if(!$this->validate([
+            'kota' => [
+                        'rules' => 'required',
+                        'errors' => [
+                                    'required' => '{field} harus diisi'
+                        ]
+            ]
+        ])){
+            $validation = \Config\Services::validation();            
+            return redirect()->to(base_url().'/'.$this->appName.'/create')->withInput()->with('validation',$validation);
+        }
+
     	$data = [
     		'id_kota' => $this->kotaModel->setID(),
     		'kota' => $this->request->getVar('kota')
@@ -41,7 +54,7 @@ class Kota extends BaseController
 
     	session()->setFlashdata('pesan','Data kota '.$this->request->getVar('kota').' berhasil ditambahkan.');
 
-    	return redirect()->to(base_url().'/kota/create');
+    	return redirect()->to(base_url().'/'.$this->appName.'/create');
     }
 
     public function edit($slug){
@@ -61,7 +74,26 @@ class Kota extends BaseController
     }
 
 
-    public function update(){  
+    public function update(){
+        if(!$this->validate([
+            'id' => [
+                        'rules' => 'required|alpha_numeric',
+                        'errors' => [
+                                    'required' => '{field} harus diisi',
+                                    'alpha_numeric' => 'format {field} salah'
+                        ]
+            ],
+            'kota' => [
+                        'rules' => 'required',
+                        'errors' => [
+                                    'required' => '{field} harus diisi'
+                        ]
+            ]
+        ])){
+            $validation = \Config\Services::validation();            
+            return redirect()->to(base_url().'/'.$this->appName.'/create')->withInput()->with('validation',$validation);
+        }
+
     	$id = $this->request->getVar('id'); 	
     	$data = [
     		'kota' => $this->request->getVar('kota')
@@ -70,12 +102,12 @@ class Kota extends BaseController
     	$this->kotaModel->update($id,$data);
     	session()->setFlashdata('pesan','Data kota '.$this->request->getVar('kota').' berhasil diupdate.');
 
-    	return redirect()->to(base_url().'/kota/edit/'.$id);
+    	return redirect()->to(base_url().'/'.$this->appName.'/edit/'.$id);
     }
 
     public function delete($id){
         $this->kotaModel->delete($id);
-        return redirect()->to(base_url().'/kota');
+        return redirect()->to(base_url().'/'.$this->appName);
     }
 }
 

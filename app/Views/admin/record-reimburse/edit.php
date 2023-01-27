@@ -18,7 +18,7 @@
               <input class="single-daterange form-control" placeholder="Tanggal Masuk Kas" type="text" value="<?php echo (isset($dt['tanggal'])? date('d/m/Y',strtotime($dt['tanggal'])):'01/01/2023'); ?>" required="required" name="tanggal">
             </div>
             <div class="form-group">
-              <label for="">ID Klaim</label>
+              <label for="">Data Klaim</label>
               <select class="form-control" name="id_klaim">
                 <?php 
                   $id_klaim = '';
@@ -26,7 +26,7 @@
                 ?>
                 <?php foreach ($klaim as $k):?>
                   <option <?php echo ($k['id_klaim']==$id_klaim? 'selected':'') ?>  value="<?php echo $k['id_klaim']; ?>">
-                    <?php echo $k['id_klaim']; ?>
+                    <?php echo '['.date('d M Y',strtotime($k['tanggal'])).'] - '.$k['site'].' - '.$k['type'].' - '.$k['nama']; ?>
                   </option>
                 <?php endforeach; ?> 
               </select>

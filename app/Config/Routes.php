@@ -43,6 +43,7 @@ $routes->get('/area/edit/(:segment)', 'Admin\Area::edit/$1');
 $routes->get('/area/create', 'Admin\Area::create');
 $routes->post('/area/save', 'Admin\Area::save');
 $routes->post('/area/update', 'Admin\Area::update');
+$routes->get('/area/list/(:num)', 'Admin\Area::getAreas/$1');
 $routes->delete('/area/(:num)', 'Admin\Area::delete/$1');
 $routes->get('/area', 'Admin\Area::index');
 
