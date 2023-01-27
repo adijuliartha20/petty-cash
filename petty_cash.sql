@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2023 at 09:05 AM
+-- Generation Time: Jan 27, 2023 at 09:00 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -99,10 +99,21 @@ CREATE TABLE `record_kas` (
   `tanggal` datetime DEFAULT NULL,
   `jumlah` decimal(10,0) DEFAULT NULL,
   `sumber` varchar(50) DEFAULT NULL,
+  `bukti_kas` varchar(255) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `record_kas`
+--
+
+INSERT INTO `record_kas` (`id_kas`, `tanggal`, `jumlah`, `sumber`, `bukti_kas`, `id_user`, `created_at`, `updated_at`) VALUES
+(1, '2023-01-01 00:00:00', '10000000', 'BCA', NULL, 1, '2023-01-26 09:45:43', '2023-01-26 09:45:43'),
+(2, '2023-04-01 00:00:00', '200000', 'Mandiri', NULL, 1, '2023-01-26 09:46:55', '2023-01-26 09:46:55'),
+(3, '1970-01-01 00:00:00', '4000000', 'Koperasi', 'bukti.jpg', 1, '2023-01-26 10:20:50', '2023-01-27 07:05:33'),
+(4, '1970-01-01 00:00:00', '321421124', 'Mandiri', '124341', 1, '2023-01-26 10:21:35', '2023-01-26 10:21:35');
 
 -- --------------------------------------------------------
 
@@ -123,6 +134,14 @@ CREATE TABLE `record_klaim` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `record_klaim`
+--
+
+INSERT INTO `record_klaim` (`id_klaim`, `tanggal`, `total`, `id_site`, `id_petty_cash_group`, `id_user_petty_cash`, `id_user`, `status`, `bukti_klaim`, `created_at`, `updated_at`) VALUES
+(1, '2023-01-20 15:23:01', '15000000', 1, 2, 1, 1, 0, 'bukti.jpg', '2023-01-27 15:23:40', '2023-01-27 15:23:41'),
+(2, '2023-01-27 15:23:53', '1000000', 2, 1, 2, 1, 0, 'bukti2.jpg', '2023-01-27 15:24:21', '2023-01-27 15:24:21');
 
 -- --------------------------------------------------------
 
@@ -150,9 +169,18 @@ CREATE TABLE `record_reimburse` (
   `tanggal` datetime DEFAULT NULL,
   `jumlah` decimal(10,0) DEFAULT NULL,
   `bukti_reimburse` varchar(50) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `record_reimburse`
+--
+
+INSERT INTO `record_reimburse` (`id_reimburse`, `id_klaim`, `tanggal`, `jumlah`, `bukti_reimburse`, `id_user`, `created_at`, `updated_at`) VALUES
+(1, 1, '2023-01-01 00:00:00', '160991', '3124124124', 1, '2023-01-27 07:45:11', '2023-01-27 07:45:11'),
+(2, 1, '2023-01-01 00:00:00', '1000000', '4124512515.jhpf', 1, '2023-01-27 07:45:42', '2023-01-27 07:56:16');
 
 -- --------------------------------------------------------
 

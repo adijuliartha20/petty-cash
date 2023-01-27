@@ -182,6 +182,36 @@
             -------------------->
             <ul class="main-menu">
               <li class="has-sub-menu">
+                <a href="/record-petty-cash">
+                  <div class="icon-w">
+                    <div class="os-icon os-icon-layout"></div>
+                  </div>
+                  <span>Record</span></a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="/record-klaim">Klaim</a>
+                  </li>
+                  <li>
+                    <a href="/record-reimburse">Reimburse</a>
+                  </li>
+                  <li>
+                    <a href="/record-kas">Kas</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="has-sub-menu">
+                <a href="/report-petty-cash">
+                  <div class="icon-w">
+                    <div class="os-icon os-icon-layout"></div>
+                  </div>
+                  <span>Report</span></a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="/report-petty-cash">Petty Cash</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="has-sub-menu">
                 <a href="index.html">
                   <div class="icon-w">
                     <div class="os-icon os-icon-layout"></div>
@@ -202,33 +232,6 @@
                   </li>
                 </ul>
               </li>
-
-              <li class="has-sub-menu">
-                <a href="/record-petty-cash">
-                  <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
-                  </div>
-                  <span>Record</span></a>
-                <ul class="sub-menu">
-                  <li>
-                    <a href="/record-petty-cash">Petty Cash</a>
-                  </li>
-                </ul>
-              </li>
-
-              <li class="has-sub-menu">
-                <a href="/report-petty-cash">
-                  <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
-                  </div>
-                  <span>Report</span></a>
-                <ul class="sub-menu">
-                  <li>
-                    <a href="/report-petty-cash">Petty Cash</a>
-                  </li>
-                </ul>
-              </li>
-
               <li class="has-sub-menu">
                 <a href="/user-petty-cash">
                   <div class="icon-w">
@@ -311,6 +314,78 @@
             Page Header
           </h1>
           <ul class="main-menu">
+            <li class="sub-header">
+              <span>Record</span>
+            </li>
+            <li>
+              <a href="/record-klaim">
+                <div class="icon-w">
+                  <div class="os-icon os-icon-layout"></div>
+                </div>
+                <span>Klaim</span></a>              
+            </li>
+            <li class="has-sub-menu">
+              <a href="/record-reimburse">
+                <div class="icon-w">
+                  <div class="os-icon os-icon-layout"></div>
+                </div>
+                <span>Reimburse</span></a>
+              <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                  Reimburse
+                </div>
+                <div class="sub-menu-icon">
+                  <i class="os-icon os-icon-layout"></i>
+                </div>
+                <div class="sub-menu-i">
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="/record-reimburse">Data Reimburse</a>
+                    </li>
+                    <li>
+                      <a href="/record-reimburse/create">Tambah Reimburse Baru</a>
+                    </li>                    
+                  </ul>
+                </div>
+              </div>              
+            </li>
+            <li class="has-sub-menu">
+              <a href="/record-kas">
+                <div class="icon-w">
+                  <div class="os-icon os-icon-layout"></div>
+                </div>
+                <span>Kas</span></a>
+              <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                  Kas
+                </div>
+                <div class="sub-menu-icon">
+                  <i class="os-icon os-icon-layout"></i>
+                </div>
+                <div class="sub-menu-i">
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="/record-kas">Data Kas</a>
+                    </li>
+                    <li>
+                      <a href="/record-kas/create">Tambah Kas Baru</a>
+                    </li>                    
+                  </ul>
+                </div>
+              </div>
+
+            </li>
+            <li class="sub-header">
+              <span>Report</span>
+            </li>
+            <li>
+              <a href="/report-petty-cash">
+                <div class="icon-w">
+                  <div class="os-icon os-icon-layout"></div>
+                </div>
+                <span>Petty Cash</span></a>              
+            </li>
+
             <li class="sub-header">
               <span>Master</span>
             </li> 
@@ -420,27 +495,7 @@
               </div>              
             </li>
 
-            <li class="sub-header">
-              <span>Record</span>
-            </li>
-            <li>
-              <a href="/record-petty-cash">
-                <div class="icon-w">
-                  <div class="os-icon os-icon-layout"></div>
-                </div>
-                <span>Petty Cash</span></a>              
-            </li>
-
-            <li class="sub-header">
-              <span>Report</span>
-            </li>
-            <li>
-              <a href="/report-petty-cash">
-                <div class="icon-w">
-                  <div class="os-icon os-icon-layout"></div>
-                </div>
-                <span>Petty Cash</span></a>              
-            </li>
+            
 
             <li class="sub-header">
               <span>User</span>

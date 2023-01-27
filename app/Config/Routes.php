@@ -74,6 +74,22 @@ $routes->post('/user-petty-cash/update', 'Admin\UserPettyCash::update');
 $routes->delete('/user-petty-cash/(:num)', 'Admin\UserPettyCash::delete/$1');
 $routes->get('/user-petty-cash', 'Admin\UserPettyCash::index');
 
+$routes->get('/record-kas/edit/(:segment)', 'Admin\RecordKas::edit/$1');
+$routes->get('/record-kas/create', 'Admin\RecordKas::create');
+$routes->post('/record-kas/save', 'Admin\RecordKas::save');
+$routes->post('/record-kas/update', 'Admin\RecordKas::update');
+$routes->delete('/record-kas/(:num)', 'Admin\RecordKas::delete/$1');
+$routes->get('/record-kas', 'Admin\RecordKas::index');
+
+$routes->get('/record-reimburse/edit/(:segment)', 'Admin\RecordReimburse::edit/$1');
+$routes->get('/record-reimburse/create', 'Admin\RecordReimburse::create');
+$routes->post('/record-reimburse/save', 'Admin\RecordReimburse::save');
+$routes->post('/record-reimburse/update', 'Admin\RecordReimburse::update');
+$routes->delete('/record-reimburse/(:num)', 'Admin\RecordReimburse::delete/$1');
+$routes->get('/record-reimburse', 'Admin\RecordReimburse::index');
+
+
+
 
 $routes->get('/', 'Home::index');
 /*
