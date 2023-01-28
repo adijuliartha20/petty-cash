@@ -54,34 +54,24 @@ Dropzone.options.myGreatDropzone = { // camelized version of the `id`
 	},
 
     init: function(){
-    	//get data
-    	
+    	//get data    	
     	const id = document.getElementById('id').value;
     	const actGetFile = document.getElementById('actGetFile').value;
     	const assetLink = document.getElementById('assetLink').value;
+    	const typeAsset = document.getElementById('typeAsset').value;
 		const xhttp = new XMLHttpRequest();
 		myDropzone = this;
 		xhttp.onload = function(){
 			const obj = JSON.parse(this.responseText);
 			const files = obj.listFile;
-			files.forEach((e,i)=>{
-				myDropzone.emit("addedfile", e);
-			    myDropzone.emit("thumbnail", e, assetLink+'/kas/'+e.nama);
-			    myDropzone.emit("complete", e);
-			   
-			    //myDropzone.find('.dz-remove')
-			    //console.log(myDropzone)	;
-
-			    /*myDropzone.on("success",function(file,response){
-		    		var fileuploded = file.previewElement.querySelector("[data-dz-name]");
-		    		fileuploded.innerHTML = response.newfilename;
-
-
-		    		var btndelete = file.previewElement.querySelector(".dz-remove");
-		    		btndelete.setAttribute("id", 'delete-midia-id-'+response.newId);
-		    	})*/
-
-			})
+			if(typeof files === 'undefined'){
+			}else{
+				files.forEach((e,i)=>{
+					myDropzone.emit("addedfile", e);
+				    myDropzone.emit("thumbnail", e, assetLink+'/'+typeAsset+'/'+e.nama);
+				    myDropzone.emit("complete", e);
+				})
+			}
 		}
 		xhttp.open("GET",actGetFile+'/'+id);
 		xhttp.send();
@@ -92,7 +82,6 @@ Dropzone.options.myGreatDropzone = { // camelized version of the `id`
 
 			var btndelete = file.previewElement.querySelector(".dz-remove");
     		btndelete.setAttribute("id", 'delete-midia-id-'+file.id_asset);
-
 		})
 
     	this.on("success",function(file,response){
@@ -122,3 +111,11 @@ Dropzone.options.myGreatDropzone = { // camelized version of the `id`
 	    });
     }
 };
+
+
+function isObjectEmpty(value) {
+  return (
+    Object.prototype.toString.call(value) === '[object Object]' &&
+    JSON.stringify(value) === '{}'
+  );
+}

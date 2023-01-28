@@ -89,12 +89,15 @@ $routes->get('/record-reimburse/edit/(:segment)', 'Admin\RecordReimburse::edit/$
 $routes->get('/record-reimburse/create', 'Admin\RecordReimburse::create');
 $routes->post('/record-reimburse/save', 'Admin\RecordReimburse::save');
 $routes->post('/record-reimburse/update', 'Admin\RecordReimburse::update');
+$routes->post('/record-reimburse/upload', 'Admin\RecordReimburse::upload');
+$routes->post('/record-reimburse/delete-file', 'Admin\RecordReimburse::deleteFile');
+$routes->get('/record-reimburse/list-assets/(:num)', 'Admin\RecordReimburse::getListAssets/$1');
 $routes->delete('/record-reimburse/(:num)', 'Admin\RecordReimburse::delete/$1');
 $routes->get('/record-reimburse', 'Admin\RecordReimburse::index');
 
 
-
-
+$routes->get('/report-petty-cash', 'Admin\ReportPettyCash::index');
+$routes->get('/login', 'Login::index');
 $routes->get('/', 'Home::index');
 /*
  * --------------------------------------------------------------------

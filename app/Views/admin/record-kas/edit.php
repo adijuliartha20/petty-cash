@@ -37,7 +37,7 @@
           <form id="my-great-dropzone" class="dropzone" action="<?php echo $upload;?>" enctype="multipart/form-data">
             <div class="preview"></div>
             <input type="hidden" id="id" name="id_kas" value="<?php echo $dt['id_kas']; ?>">
-            <input type="hidden" id="type" value="kas">
+            
           </form>          
           <div class="form-buttons-w">
             <button class="btn btn-primary" type="button" onClick="submit_form()">Simpan</button>
@@ -45,6 +45,7 @@
           <input type="hidden" id="actDeleteFile" value="<?php echo $deleteFile; ?>">
           <input type="hidden" id="actGetFile" value="<?php echo $actGetFile; ?>">
           <input type="hidden" id="assetLink" value="<?php echo $assetLink; ?>">
+          <input type="hidden" id="typeAsset" value="<?php echo $typeAsset; ?>">
           <p></p>
           <?php if(session()->getFlashdata('pesan')) : ?>
           <div class="alert alert-success" role="alert">

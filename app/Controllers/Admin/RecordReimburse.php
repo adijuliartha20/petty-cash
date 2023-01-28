@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Models\RecordReimburseModel;
 use App\Models\RecordKlaimModel;
+use App\Models\AssetsModel;
 
 class RecordReimburse extends BaseController
 {
@@ -13,6 +14,7 @@ class RecordReimburse extends BaseController
 	public function __construct(){
         $this->recordReimburseModel = new RecordReimburseModel();
         $this->recordKlaimModel = new RecordKlaimModel();
+        $this->assetsModel = new AssetsModel();
         $this->appName = 'record-reimburse';
         $this->title = 'Record Reimburse';
 	}
@@ -27,13 +29,22 @@ class RecordReimburse extends BaseController
     }
 
     public function create(){
-    	$data = [
+        $id = $this->recordReimburseModel->setID();
+        $data = [
+            'id_reimburse'=> $id,
+            'id_user'     => 1
+        ];
+
+        $this->recordReimburseModel->insert($data);
+        return redirect()->to(base_url().'/'.$this->appName.'/edit/'.$id);
+
+    	/*$data = [
     		'title' => 'Tambah '.$this->title,
     		'action' => base_url().'/'.$this->appName.'/save',
             'dt' => [],
             'klaim'=> $this->recordKlaimModel->getDataKlaim()
     	];
-    	return view('admin/'.$this->appName.'/edit',$data);
+    	return view('admin/'.$this->appName.'/edit',$data);*/
     }
 
     public function save(){
@@ -93,10 +104,15 @@ class RecordReimburse extends BaseController
 
     public function edit($slug){
     	$data = [
-    		'title' => 'Edit '.$this->title,
+    		'title' => $this->title,
     		'action' => base_url().'/'.$this->appName.'/update',    		
     		'dt'=> $this->recordReimburseModel->getData($slug),
-            'klaim'=> $this->recordKlaimModel->getDataKlaim()
+            'klaim'=> $this->recordKlaimModel->getDataKlaim(),
+            'upload' => base_url().'/'.$this->appName.'/upload',
+            'deleteFile' => base_url().'/'.$this->appName.'/delete-file',
+            'actGetFile' => base_url().'/'.$this->appName.'/list-assets',
+            'assetLink' => base_url().'/assets',
+            'typeAsset' => 'reimburse'
     	];
     	//dd($data['dt']);
     	if(empty($data['dt'])){
@@ -108,6 +124,7 @@ class RecordReimburse extends BaseController
 
 
     public function update(){
+        $id = $this->request->getVar('id');
         if(!$this->validate([
             'id' => [
                         'rules' => 'required|alpha_numeric',
@@ -135,19 +152,13 @@ class RecordReimburse extends BaseController
                                     'required' => '{field} harus diisi',
                                     'alpha_numeric' => 'format {field} salah'
                         ]
-            ],
-            'bukti_reimburse' => [
-                        'rules' => 'required',
-                        'errors' => [
-                                    'required' => '{field} harus diisi'
-                        ]
             ]
         ])){
             $validation = \Config\Services::validation();
             return redirect()->to(base_url().'/'.$this->appName.'/edit/'.$id)->withInput()->with('validation',$validation);
         }
 
-    	$id = $this->request->getVar('id');
+    	
         $tanggal  ='';
         $dttgl = explode('/',$this->request->getVar('tanggal'));   
         if(!empty($dttgl)){
@@ -169,7 +180,109 @@ class RecordReimburse extends BaseController
     }
 
     public function delete($id){
+        //get data
+        $data = $this->assetsModel->getDataByPost($id);
+        //delete asset
+        foreach ($data as $dt) {
+            $id = $dt['id_asset'];
+            if($this->assetsModel->where('id_asset',$id)->delete()){
+                unlink('../public/assets/reimburse/'.$dt['nama']);
+            }
+        }       
+
         $this->recordReimburseModel->delete($id);
         return redirect()->to(base_url().'/'.$this->appName.'');
     }
+
+    public function upload(){
+        $data = array();
+
+        // Read new token and assign to $data['token']
+        $data['token'] = csrf_hash();
+
+        ## Validation
+        $validation = \Config\Services::validation();
+
+        $input = $validation->setRules([
+         'file' => 'uploaded[file]|max_size[file,1024]|ext_in[file,jpeg,jpg,png,pdf],'
+        ]);
+
+        if ($validation->withRequest($this->request)->run() == FALSE){
+         $data['success'] = 0;
+         $data['error'] = $validation->getError('file');// Error response
+
+        }else{
+            if($file = $this->request->getFile('file')) {
+                if ($file->isValid() && ! $file->hasMoved()) {
+                   // Get file name and extension
+                    $name = $file->getName();
+                    $ext = $file->getClientExtension();
+
+                    // Get random file name
+                    $newName = $file->getRandomName();
+
+                    //save data
+                    $id_data = $this->request->getVar('id_data');
+                    $idAsset = $this->assetsModel->setID();
+                    $data = [
+                                'id_asset' => $idAsset,
+                                'nama' => $newName,
+                                'id_data' => $id_data,
+                                'tipe' => 'reimburse',
+                                'id_user' => 1
+                            ];
+                    $this->assetsModel->insert($data);
+
+                    // Store file in public/uploads/ folder
+                    $file->move('../public/assets/reimburse', $newName);
+
+                    // Response
+                    $data['success'] = 1;
+                    $data['newfilename'] = $newName;
+                    $data['newId'] = $idAsset;
+                    $data['message'] = 'Uploaded Successfully!';
+                }else{
+                   // Response
+                   $data['success'] = 2;
+                   $data['message'] = 'File not uploaded.'; 
+                }
+             }else{
+                // Response
+                $data['success'] = 2;
+                $data['message'] = 'File not uploaded.';
+            }
+        }
+        return $this->response->setJSON($data);
+    }
+
+    public function deleteFile(){
+        $id = $this->request->getVar('idFile');        
+        $data = [];
+        $data['status'] = 'error';
+        $data['message'] = 'file tidak ada';
+
+        $img = $this->assetsModel->getData($id);
+        if(!empty($img)){
+             //detele data
+            if($this->assetsModel->where('id_asset',$id)->delete()){
+                unlink('../public/assets/reimburse/'.$img['nama']);
+                $data['status'] = 'success';
+                $data['message'] = 'file berhasil di hapus';
+            }
+        }
+        return $this->response->setJSON($data);
+    }
+
+    public function getListAssets($slug){
+        $dt = [];
+        $dt['status'] = 'success';
+
+        $data = $this->assetsModel->getDataByPost($slug);
+        if(!empty($data)){
+            $dt['listFile'] = $data;
+        }
+
+        return $this->response->setJSON($dt);
+    }
+
 }

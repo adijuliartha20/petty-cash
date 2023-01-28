@@ -103,7 +103,8 @@ class RecordKas extends BaseController
             'deleteFile' => base_url().'/'.$this->appName.'/delete-file',
             'actGetFile' => base_url().'/'.$this->appName.'/list-assets',
             'assetLink' => base_url().'/assets',
-    		'dt'=> $this->recordKasModel->getData($slug)
+    		'dt'=> $this->recordKasModel->getData($slug),
+            'typeAsset' => 'kas'
     	];
     	
     	if(empty($data['dt'])){
@@ -163,6 +164,15 @@ class RecordKas extends BaseController
     }
 
     public function delete($id){
+         //get data
+        $data = $this->assetsModel->getDataByPost($id);
+        //delete asset
+        foreach ($data as $dt) {
+            $id = $dt['id_asset'];
+            if($this->assetsModel->where('id_asset',$id)->delete()){
+                unlink('../public/assets/kas/'.$dt['nama']);
+            }
+        }
         $this->recordKasModel->delete($id);
         return redirect()->to(base_url().'/'.$this->appName.'');
     }

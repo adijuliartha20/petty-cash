@@ -36,21 +36,28 @@
               <input class="form-control" name="jumlah" data-error="Jumlah wajib diisi"  placeholder="Masukkan jumlah" required="required" value="<?php echo (isset($dt['jumlah'])? $dt['jumlah']:''); ?>" type="number">
               <div class="help-block form-text with-errors form-control-feedback"></div>
             </div>
-            <div class="form-group">
+            <div>
               <label for="">Bukti</label>
-              <input class="form-control" name="bukti_reimburse" data-error="Bukti wajib diisi"  placeholder="Masukkan bukti" required="required" value="<?php echo (isset($dt['bukti_reimburse'])? $dt['bukti_reimburse']:''); ?>" type="text">
-              <div class="help-block form-text with-errors form-control-feedback"></div>
-            </div>            
-            <div class="form-buttons-w">
-              <button class="btn btn-primary" type="submit">Simpan</button>
             </div>
             <?php 
               
             if(isset($dt['id_reimburse'])): ?>
               <input type="hidden" name="id" value="<?php echo $dt['id_reimburse']; ?>">
             <?php endif;?>
-
+            <button type="submit" id="trigger-submit" class="invisible-btn">Simpan</button>
           </form>
+
+          <form id="my-great-dropzone" class="dropzone" action="<?php echo $upload;?>" enctype="multipart/form-data">
+            <div class="preview"></div>
+            <input type="hidden" id="id" name="id_data" value="<?php echo $dt['id_reimburse']; ?>">
+          </form>
+          <div class="form-buttons-w">
+            <button class="btn btn-primary" type="button" onClick="submit_form()">Simpan</button>
+          </div>
+          <input type="hidden" id="actDeleteFile" value="<?php echo $deleteFile; ?>">
+          <input type="hidden" id="actGetFile" value="<?php echo $actGetFile; ?>">
+          <input type="hidden" id="assetLink" value="<?php echo $assetLink; ?>">
+          <input type="hidden" id="typeAsset" value="<?php echo $typeAsset; ?>">
           <p></p>
           <?php if(session()->getFlashdata('pesan')) : ?>
           <div class="alert alert-success" role="alert">
