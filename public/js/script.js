@@ -68,7 +68,6 @@ Dropzone.options.myGreatDropzone = { // camelized version of the `id`
 				myDropzone.emit("addedfile", e);
 			    myDropzone.emit("thumbnail", e, assetLink+'/kas/'+e.nama);
 			    myDropzone.emit("complete", e);
-			    myDropzone.emit("name", e.nama);
 			   
 			    //myDropzone.find('.dz-remove')
 			    //console.log(myDropzone)	;
@@ -86,6 +85,15 @@ Dropzone.options.myGreatDropzone = { // camelized version of the `id`
 		}
 		xhttp.open("GET",actGetFile+'/'+id);
 		xhttp.send();
+
+		this.on("addedfile", function (file,response) {
+			var fileuploded = file.previewElement.querySelector("[data-dz-name]");
+    		fileuploded.innerHTML = file.nama;
+
+			var btndelete = file.previewElement.querySelector(".dz-remove");
+    		btndelete.setAttribute("id", 'delete-midia-id-'+file.id_asset);
+
+		})
 
     	this.on("success",function(file,response){
     		var fileuploded = file.previewElement.querySelector("[data-dz-name]");
