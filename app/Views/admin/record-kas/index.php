@@ -45,7 +45,7 @@
                           <tr>
                             <td><?php echo $i++; ?></td>
                             <td><?php echo $dt['tanggal'] ?></td>
-                            <td><?php echo number_to_currency($dt['jumlah'], 'IDR', 'id_ID', 0);?></td>
+                            <td><?php echo number_to_currency((!empty($dt['jumlah'])? $dt['jumlah']: 0), 'IDR', 'id_ID', 0);?></td>
                             <td><?php echo $dt['sumber'] ?></td>
                             <td><?php echo $dt['id_user'] ?></td>
                             <td><?php echo $dt['created_at'] ?></td>

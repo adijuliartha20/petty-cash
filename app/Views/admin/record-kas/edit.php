@@ -27,22 +27,24 @@
               <label for="">Sumber</label>
               <input class="form-control" name="sumber" data-error="Sumber wajib diisi"  placeholder="Masukkan sumber" required="required" value="<?php echo (isset($dt['sumber'])? $dt['sumber']:''); ?>">
               <div class="help-block form-text with-errors form-control-feedback"></div>
-            </div>
-            <div class="form-group">
-              <label for="">Bukti</label>
-              <input class="form-control" name="bukti_kas" data-error="Bukti wajib diisi"  placeholder="Masukkan bukti" required="required" value="<?php echo (isset($dt['bukti_kas'])? $dt['bukti_kas']:''); ?>" type="text">
-              <div class="help-block form-text with-errors form-control-feedback"></div>
-            </div>            
-            <div class="form-buttons-w">
-              <button class="btn btn-primary" type="submit">Simpan</button>
-            </div>
-            <?php 
-              
+            </div>                     
+            <?php               
             if(isset($dt['id_kas'])): ?>
               <input type="hidden" name="id" value="<?php echo $dt['id_kas']; ?>">
             <?php endif;?>
-
+            <button type="submit" id="trigger-submit" class="invisible-btn">Simpan</button>
           </form>
+          <form id="my-great-dropzone" class="dropzone" action="<?php echo $upload;?>" enctype="multipart/form-data">
+            <div class="preview"></div>
+            <input type="hidden" id="id" name="id_kas" value="<?php echo $dt['id_kas']; ?>">
+            <input type="hidden" id="type" value="kas">
+          </form>          
+          <div class="form-buttons-w">
+            <button class="btn btn-primary" type="button" onClick="submit_form()">Simpan</button>
+          </div>
+          <input type="hidden" id="actDeleteFile" value="<?php echo $deleteFile; ?>">
+          <input type="hidden" id="actGetFile" value="<?php echo $actGetFile; ?>">
+          <input type="hidden" id="assetLink" value="<?php echo $assetLink; ?>">
           <p></p>
           <?php if(session()->getFlashdata('pesan')) : ?>
           <div class="alert alert-success" role="alert">
@@ -53,4 +55,8 @@
     </div>
   </div>    
 </div>
+
+
+
+
 <?= $this->endSection();  ?>          

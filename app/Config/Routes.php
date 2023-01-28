@@ -79,6 +79,9 @@ $routes->get('/record-kas/edit/(:segment)', 'Admin\RecordKas::edit/$1');
 $routes->get('/record-kas/create', 'Admin\RecordKas::create');
 $routes->post('/record-kas/save', 'Admin\RecordKas::save');
 $routes->post('/record-kas/update', 'Admin\RecordKas::update');
+$routes->post('/record-kas/upload', 'Admin\RecordKas::upload');
+$routes->post('/record-kas/delete-file', 'Admin\RecordKas::deleteFile');
+$routes->get('/record-kas/list-assets/(:num)', 'Admin\RecordKas::getListAssets/$1');
 $routes->delete('/record-kas/(:num)', 'Admin\RecordKas::delete/$1');
 $routes->get('/record-kas', 'Admin\RecordKas::index');
 

@@ -11,7 +11,7 @@ class RecordKasModel extends Model
     protected $useTimestamps = true;
 
     //tambahkan property disini untuk save
-    protected $allowedFields = ['id_kas','tanggal','jumlah','sumber','bukti_kas','id_user'];
+    protected $allowedFields = ['id_kas','tanggal','jumlah','sumber','bukti_kas','id_user','status'];
 
     public function getData($slug=false,$join=false){
 		if($slug==false){
