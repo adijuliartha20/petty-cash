@@ -279,3 +279,24 @@ function deleteRowHTML(id){
 	document.getElementById('trDetail'+id).remove();
 	countTotal();
 }
+
+
+
+function findReport(){
+	const mulai = document.getElementById('mulai').value;
+	const akhir = document.getElementById('akhir').value;
+
+	var act = document.getElementById("getReport").value;
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", act, true); 
+	xhttp.setRequestHeader("Content-Type", "application/json");
+	xhttp.onreadystatechange = function() {
+	   if (this.readyState == 4 && this.status == 200) {
+	     	//console.log(this.responseText);
+	   		let _ref;
+			return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;      
+	   }
+	};
+	var data = {'mulai':mulai, 'akhir':akhir};
+	xhttp.send(JSON.stringify(data));
+}

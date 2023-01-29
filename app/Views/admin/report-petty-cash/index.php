@@ -6,6 +6,7 @@
   <div class="content-box">
     <div class="row">
       <div class="col-sm-12">
+        
         <div class="element-wrapper">
           <div class="element-box">
             <h5 class="form-header">
@@ -14,23 +15,81 @@
             <div class="form-desc">
               
             </div>
-            <form class="form-inline">
-              <input type="date" name="mulai" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="First Name">
-              <label class="sr-only"> First Name</label>
-              <input class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="First Name" type="text">
-              <label class="sr-only"> Last Name</label>
-              <input class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Last Name" type="text">
-              <label class="sr-only"> Username</label>
-              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    @
+            <form class="form-inline form-report">
+                <div class="form-group">
+                  <label for="">Mulai&nbsp;&nbsp;</label>
+                  <div class="date-input">
+                    <input class="single-daterange form-control" placeholder="Silahkan pilih tanggal mulai" type="text" id="mulai">
                   </div>
                 </div>
-                <input class="form-control" placeholder="Username" type="text">
-              </div>
-              <button class="btn btn-primary" type="submit"> Submit</button>
+                <div class="form-group">
+                  <label for="">Akhir&nbsp;&nbsp;</label>
+                  <div class="date-input">
+                    <input class="single-daterange form-control" placeholder="Silahkan pilih tanggal akhir" type="text" id="akhir">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary" type="button" onClick="findReport()">Cari</button>
+                </div>
+                <input type="hidden" id="getReport" value="<?php echo $actGetReport; ?>">
             </form>
+
+            <div class="table-responsive">
+              <!--------------------
+              START - Basic Table
+              -------------------->
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Tanggal</th>
+                    <th>Unit</th>
+                    <th>Type Pembelian</th>
+                    <th>Oleh</th>
+                    <th class="text-center">Debit</th>
+                    <th class="text-center">Kredit</th>
+                    <th class="text-right">Saldo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>01/04/2023</td>
+                    <td class="text-center" colspan="3">Kas Masuk</td>
+                    <td>5.000.000</td>
+                    <td></td>                    
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>02/04/2023</td>
+                    <td>Pondok Lensa Bali</td>
+                    <td>ATK</td>
+                    <td>Adi Juliartha</td>
+                    <td></td>
+                    <td>700.000</td>
+                    <td>4.300.000</td>
+                  </tr>
+                  <tr>
+                    <td>03/04/2023</td>
+                    <td>Pondok Lensa Bandung</td>
+                    <td>Rapat Luar Kota</td>
+                    <td>Adi Juliartha</td>
+                    <td></td>
+                    <td>500.000</td>
+                    <td>3.800.000</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th colspan="4"><h6>Total</h6></th>
+                    <th><h6>5.000.000</h6></th>
+                    <td><h6>1.200.000</h6></td>
+                    <th><h6>3.800.000</h6></th>
+                  </tr>
+                </tfoot>
+              </table>
+              <!--------------------
+              END - Basic Table
+              -------------------->
+            </div>
           </div>
         </div>
 
