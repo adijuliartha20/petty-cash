@@ -95,6 +95,15 @@ $routes->get('/record-reimburse/list-assets/(:num)', 'Admin\RecordReimburse::get
 $routes->delete('/record-reimburse/(:num)', 'Admin\RecordReimburse::delete/$1');
 $routes->get('/record-reimburse', 'Admin\RecordReimburse::index');
 
+$routes->get('/record-klaim/edit/(:segment)', 'Admin\RecordKlaim::edit/$1');
+$routes->get('/record-klaim/create', 'Admin\RecordKlaim::create');
+$routes->post('/record-klaim/save', 'Admin\RecordKlaim::save');
+$routes->post('/record-klaim/update', 'Admin\RecordKlaim::update');
+$routes->post('/record-klaim/upload', 'Admin\RecordKlaim::upload');
+$routes->post('/record-klaim/delete-file', 'Admin\RecordKlaim::deleteFile');
+$routes->get('/record-klaim/list-assets/(:num)', 'Admin\RecordKlaim::getListAssets/$1');
+$routes->delete('/record-klaim/(:num)', 'Admin\RecordKlaim::delete/$1');
+$routes->get('/record-klaim', 'Admin\RecordKlaim::index');
 
 $routes->get('/report-petty-cash', 'Admin\ReportPettyCash::index');
 $routes->get('/login', 'Login::index');

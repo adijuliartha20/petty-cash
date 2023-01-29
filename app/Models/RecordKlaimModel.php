@@ -15,9 +15,12 @@ class RecordKlaimModel extends Model
 
     public function getData($slug=false,$join=false){
 		if($slug==false){
-			return $this->findAll();
+            return $this->db->table('record_klaim k')->select('k.id_klaim, k.tanggal, k.total, k.status, k.id_user, k.created_at, k.updated_at, s.site, p.petty_cash_group type, u.nama')->join('site s','k.id_site=s.id_site')->join('petty_cash_group p','k.id_petty_cash_group=p.id_petty_cash_group')->join('user_petty_cash u','k.id_user_petty_cash=u.id_user_petty_cash')->get()->getResultArray();
 		}
-		return $this->where(['id_klaim'=>$slug])->first();
+
+        return $this->where(['id_klaim'=>$slug])->first();
+
+        /*return $this->db->table('record_klaim k')->select('k.id_klaim, k.tanggal, k.total, k.status, k.id_user, k.created_at, k.updated_at, s.site, p.petty_cash_group type, u.nama')->join('site s','k.id_site=s.id_site','left')->join('petty_cash_group p','k.id_petty_cash_group=p.id_petty_cash_group','left')->join('user_petty_cash u','k.id_user_petty_cash=u.id_user_petty_cash','left')->where('k.id_klaim',$slug)->get()->getResultArray();*/
     }
 
     public function getDataKlaim(){

@@ -20,6 +20,7 @@
     <link href="<?php echo base_url(); ?>/bower_components/slick-carousel/slick/slick.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>/css/main.css?version=4.5.0" rel="stylesheet">
     <link href="<?php echo base_url(); ?>/css/style.css?version=1.0" rel="stylesheet">
+    
   </head>
   <body class="menu-position-side menu-side-left full-screen">
     <div class="all-wrapper solid-bg-all">
@@ -317,12 +318,30 @@
             <li class="sub-header">
               <span>Record</span>
             </li>
-            <li>
+            <li class="has-sub-menu">
               <a href="/record-klaim">
                 <div class="icon-w">
                   <div class="os-icon os-icon-folder"></div>
                 </div>
-                <span>Klaim</span></a>              
+                <span>Klaim</span></a>
+              <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                  Klaim
+                </div>
+                <div class="sub-menu-icon">
+                  <i class="os-icon os-icon-folder"></i>
+                </div>
+                <div class="sub-menu-i">
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="/record-klaim">Data Klaim</a>
+                    </li>
+                    <li>
+                      <a href="/record-klaim/create">Tambah Klaim Baru</a>
+                    </li>                    
+                  </ul>
+                </div>
+              </div>               
             </li>
             <li class="has-sub-menu">
               <a href="/record-reimburse">

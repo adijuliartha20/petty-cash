@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2023 at 09:00 AM
+-- Generation Time: Jan 29, 2023 at 10:21 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -41,8 +41,32 @@ CREATE TABLE `area` (
 
 INSERT INTO `area` (`id_area`, `area`, `id_kota`, `created_at`, `updated_at`) VALUES
 (1, 'Lembang', 1, '2023-01-26 01:20:18', '2023-01-26 01:22:00'),
-(2, 'Kuta', 2, '2023-01-26 01:20:27', '2023-01-26 01:20:27'),
+(2, 'Kuta', 1, '2023-01-26 01:20:27', '2023-01-26 01:20:27'),
 (3, 'Jakarta Selatan', 3, '2023-01-26 01:22:46', '2023-01-26 01:22:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assets`
+--
+
+CREATE TABLE `assets` (
+  `id_asset` int(11) NOT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  `id_data` int(11) DEFAULT NULL,
+  `tipe` char(20) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `assets`
+--
+
+INSERT INTO `assets` (`id_asset`, `nama`, `id_data`, `tipe`, `id_user`, `created_at`, `updated_at`) VALUES
+(1, '1674953207_bd5e10c0824210397168.jpg', 3, 'klaim', 1, '2023-01-29 00:46:47', '2023-01-29 00:46:47'),
+(2, '1674953210_beb530c59e10d8d47cc3.jpg', 3, 'klaim', 1, '2023-01-29 00:46:50', '2023-01-29 00:46:50');
 
 -- --------------------------------------------------------
 
@@ -85,7 +109,7 @@ CREATE TABLE `petty_cash_group` (
 
 INSERT INTO `petty_cash_group` (`id_petty_cash_group`, `petty_cash_group`, `created_at`, `updated_at`) VALUES
 (1, 'Group Petty 1', '2023-01-26 11:52:06', '2023-01-26 04:02:06'),
-(2, 'Group Petty 2', '2023-01-26 11:52:15', '2023-01-26 04:01:44'),
+(2, 'Perlengkapan Kantor', '2023-01-26 11:52:15', '2023-01-28 23:14:46'),
 (3, 'Group Petty 3', '2023-01-26 03:58:52', '2023-01-26 03:58:52');
 
 -- --------------------------------------------------------
@@ -101,6 +125,7 @@ CREATE TABLE `record_kas` (
   `sumber` varchar(50) DEFAULT NULL,
   `bukti_kas` varchar(255) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL COMMENT '0:draft,1:publish',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -109,11 +134,11 @@ CREATE TABLE `record_kas` (
 -- Dumping data for table `record_kas`
 --
 
-INSERT INTO `record_kas` (`id_kas`, `tanggal`, `jumlah`, `sumber`, `bukti_kas`, `id_user`, `created_at`, `updated_at`) VALUES
-(1, '2023-01-01 00:00:00', '10000000', 'BCA', NULL, 1, '2023-01-26 09:45:43', '2023-01-26 09:45:43'),
-(2, '2023-04-01 00:00:00', '200000', 'Mandiri', NULL, 1, '2023-01-26 09:46:55', '2023-01-26 09:46:55'),
-(3, '1970-01-01 00:00:00', '4000000', 'Koperasi', 'bukti.jpg', 1, '2023-01-26 10:20:50', '2023-01-27 07:05:33'),
-(4, '1970-01-01 00:00:00', '321421124', 'Mandiri', '124341', 1, '2023-01-26 10:21:35', '2023-01-26 10:21:35');
+INSERT INTO `record_kas` (`id_kas`, `tanggal`, `jumlah`, `sumber`, `bukti_kas`, `id_user`, `status`, `created_at`, `updated_at`) VALUES
+(1, '2023-01-01 00:00:00', '10000000', 'BCA', NULL, 1, NULL, '2023-01-26 09:45:43', '2023-01-26 09:45:43'),
+(3, '1970-01-01 00:00:00', '4000000', 'Koperasi', 'bukti.jpg', 1, NULL, '2023-01-26 10:20:50', '2023-01-27 07:05:33'),
+(4, '1970-01-01 00:00:00', '321421124', 'Mandiri', '124341', 1, NULL, '2023-01-26 10:21:35', '2023-01-26 10:21:35'),
+(5, '2023-01-01 00:00:00', '100000', 'BCA', NULL, 1, 1, '2023-01-28 00:40:43', '2023-01-28 01:33:38');
 
 -- --------------------------------------------------------
 
@@ -130,7 +155,6 @@ CREATE TABLE `record_klaim` (
   `id_user_petty_cash` int(11) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   `status` tinyint(4) DEFAULT NULL COMMENT '{0: not rembust, 1: rembust}',
-  `bukti_klaim` varchar(255) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -139,9 +163,10 @@ CREATE TABLE `record_klaim` (
 -- Dumping data for table `record_klaim`
 --
 
-INSERT INTO `record_klaim` (`id_klaim`, `tanggal`, `total`, `id_site`, `id_petty_cash_group`, `id_user_petty_cash`, `id_user`, `status`, `bukti_klaim`, `created_at`, `updated_at`) VALUES
-(1, '2023-01-20 15:23:01', '15000000', 1, 2, 1, 1, 0, 'bukti.jpg', '2023-01-27 15:23:40', '2023-01-27 15:23:41'),
-(2, '2023-01-27 15:23:53', '1000000', 2, 1, 2, 1, 0, 'bukti2.jpg', '2023-01-27 15:24:21', '2023-01-27 15:24:21');
+INSERT INTO `record_klaim` (`id_klaim`, `tanggal`, `total`, `id_site`, `id_petty_cash_group`, `id_user_petty_cash`, `id_user`, `status`, `created_at`, `updated_at`) VALUES
+(1, '2023-01-20 15:23:01', '15000000', 1, 2, 1, 1, 0, '2023-01-27 15:23:40', '2023-01-27 15:23:41'),
+(2, '2023-01-27 15:23:53', '1000000', 1, 2, 2, 1, 0, '2023-01-27 15:24:21', '2023-01-27 15:24:21'),
+(3, '2023-01-01 00:00:00', '0', 4, 2, 2, 1, 0, '2023-01-29 00:43:13', '2023-01-29 08:38:26');
 
 -- --------------------------------------------------------
 
@@ -152,9 +177,11 @@ INSERT INTO `record_klaim` (`id_klaim`, `tanggal`, `total`, `id_site`, `id_petty
 CREATE TABLE `record_klaim_detail` (
   `id_klaim_detail` int(11) NOT NULL,
   `id_klaim` int(11) DEFAULT 0,
-  `nama` int(11) DEFAULT 0,
+  `nama` varchar(50) DEFAULT '0',
   `harga` decimal(10,0) DEFAULT 0,
-  `jumlah` int(11) DEFAULT 0
+  `jumlah` int(11) DEFAULT 0,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -180,7 +207,7 @@ CREATE TABLE `record_reimburse` (
 
 INSERT INTO `record_reimburse` (`id_reimburse`, `id_klaim`, `tanggal`, `jumlah`, `bukti_reimburse`, `id_user`, `created_at`, `updated_at`) VALUES
 (1, 1, '2023-01-01 00:00:00', '160991', '3124124124', 1, '2023-01-27 07:45:11', '2023-01-27 07:45:11'),
-(2, 1, '2023-01-01 00:00:00', '1000000', '4124512515.jhpf', 1, '2023-01-27 07:45:42', '2023-01-27 07:56:16');
+(3, 1, '2023-01-01 00:00:00', '160991', NULL, 1, '2023-01-28 13:09:43', '2023-01-28 13:18:18');
 
 -- --------------------------------------------------------
 
@@ -203,7 +230,8 @@ CREATE TABLE `site` (
 
 INSERT INTO `site` (`id_site`, `site`, `id_area`, `id_kota`, `created_at`, `updated_at`) VALUES
 (1, 'Mall Bali Galeria 5', 2, 2, '2023-01-26 09:35:14', '2023-01-26 02:36:56'),
-(3, 'Mall Jepara', 1, 1, '2023-01-26 02:11:52', '2023-01-26 02:11:52');
+(3, 'Mall Jepara', 1, 1, '2023-01-26 02:11:52', '2023-01-26 02:11:52'),
+(4, 'Mall Taman Anggrek', 3, 3, '2023-01-27 12:50:35', '2023-01-27 12:56:24');
 
 -- --------------------------------------------------------
 
@@ -262,6 +290,12 @@ INSERT INTO `user_petty_cash` (`id_user_petty_cash`, `nama`, `ktp`, `telpon`, `e
 --
 ALTER TABLE `area`
   ADD PRIMARY KEY (`id_area`);
+
+--
+-- Indexes for table `assets`
+--
+ALTER TABLE `assets`
+  ADD PRIMARY KEY (`id_asset`);
 
 --
 -- Indexes for table `kota`
@@ -325,7 +359,7 @@ ALTER TABLE `user_petty_cash`
 -- AUTO_INCREMENT for table `record_klaim_detail`
 --
 ALTER TABLE `record_klaim_detail`
-  MODIFY `id_klaim_detail` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_klaim_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
