@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2023 at 10:21 AM
+-- Generation Time: Jan 30, 2023 at 12:13 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -40,9 +40,9 @@ CREATE TABLE `area` (
 --
 
 INSERT INTO `area` (`id_area`, `area`, `id_kota`, `created_at`, `updated_at`) VALUES
-(1, 'Lembang', 1, '2023-01-26 01:20:18', '2023-01-26 01:22:00'),
-(2, 'Kuta', 1, '2023-01-26 01:20:27', '2023-01-26 01:20:27'),
-(3, 'Jakarta Selatan', 3, '2023-01-26 01:22:46', '2023-01-26 01:22:46');
+(1, 'Cidadap', 1, '2023-01-26 01:20:18', '2023-01-30 06:52:00'),
+(2, 'Kuta', 2, '2023-01-26 01:20:27', '2023-01-30 06:52:12'),
+(3, 'Tebet', 3, '2023-01-26 01:22:46', '2023-01-30 06:52:42');
 
 -- --------------------------------------------------------
 
@@ -65,8 +65,9 @@ CREATE TABLE `assets` (
 --
 
 INSERT INTO `assets` (`id_asset`, `nama`, `id_data`, `tipe`, `id_user`, `created_at`, `updated_at`) VALUES
-(1, '1674953207_bd5e10c0824210397168.jpg', 3, 'klaim', 1, '2023-01-29 00:46:47', '2023-01-29 00:46:47'),
-(2, '1674953210_beb530c59e10d8d47cc3.jpg', 3, 'klaim', 1, '2023-01-29 00:46:50', '2023-01-29 00:46:50');
+(1, '1675052611_7f2e30f23d3bfa623f32.jpg', 2, 'klaim', 1, '2023-01-30 04:23:31', '2023-01-30 04:23:31'),
+(2, '1675052657_5545f9b809f1af076fb6.jpg', 3, 'klaim', 1, '2023-01-30 04:24:17', '2023-01-30 04:24:17'),
+(3, '1675052696_d446697a1aa02a049598.jpg', 4, 'klaim', 1, '2023-01-30 04:24:56', '2023-01-30 04:24:56');
 
 -- --------------------------------------------------------
 
@@ -135,10 +136,7 @@ CREATE TABLE `record_kas` (
 --
 
 INSERT INTO `record_kas` (`id_kas`, `tanggal`, `jumlah`, `sumber`, `bukti_kas`, `id_user`, `status`, `created_at`, `updated_at`) VALUES
-(1, '2023-01-01 00:00:00', '10000000', 'BCA', NULL, 1, NULL, '2023-01-26 09:45:43', '2023-01-26 09:45:43'),
-(3, '1970-01-01 00:00:00', '4000000', 'Koperasi', 'bukti.jpg', 1, NULL, '2023-01-26 10:20:50', '2023-01-27 07:05:33'),
-(4, '1970-01-01 00:00:00', '321421124', 'Mandiri', '124341', 1, NULL, '2023-01-26 10:21:35', '2023-01-26 10:21:35'),
-(5, '2023-01-01 00:00:00', '100000', 'BCA', NULL, 1, 1, '2023-01-28 00:40:43', '2023-01-28 01:33:38');
+(1, '2023-01-01 00:00:00', '40000000', 'BCA', NULL, 1, 1, '2023-01-28 00:40:43', '2023-01-28 01:33:38');
 
 -- --------------------------------------------------------
 
@@ -166,7 +164,8 @@ CREATE TABLE `record_klaim` (
 INSERT INTO `record_klaim` (`id_klaim`, `tanggal`, `total`, `id_site`, `id_petty_cash_group`, `id_user_petty_cash`, `id_user`, `status`, `created_at`, `updated_at`) VALUES
 (1, '2023-01-20 15:23:01', '15000000', 1, 2, 1, 1, 0, '2023-01-27 15:23:40', '2023-01-27 15:23:41'),
 (2, '2023-01-27 15:23:53', '1000000', 1, 2, 2, 1, 0, '2023-01-27 15:24:21', '2023-01-27 15:24:21'),
-(3, '2023-01-01 00:00:00', '0', 4, 2, 2, 1, 0, '2023-01-29 00:43:13', '2023-01-29 08:38:26');
+(3, '2023-01-30 00:00:00', '346000', 4, 2, 2, 1, 0, '2023-01-30 04:14:56', '2023-01-30 09:35:19'),
+(4, '2023-01-30 00:00:00', '15000', 1, 2, 2, 1, 0, '2023-01-30 04:24:36', '2023-01-30 08:52:11');
 
 -- --------------------------------------------------------
 
@@ -183,6 +182,17 @@ CREATE TABLE `record_klaim_detail` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `record_klaim_detail`
+--
+
+INSERT INTO `record_klaim_detail` (`id_klaim_detail`, `id_klaim`, `nama`, `harga`, `jumlah`, `created_at`, `updated_at`) VALUES
+(36, 4, 'Buku', '5000', 2, '2023-01-30 08:52:11', '2023-01-30 08:52:11'),
+(37, 4, 'Pensil', '1000', 5, '2023-01-30 08:52:11', '2023-01-30 08:52:11'),
+(38, 3, 'Kertas A4', '24000', 4, '2023-01-30 09:35:19', '2023-01-30 09:35:19'),
+(39, 3, 'Pulpen', '5000', 10, '2023-01-30 09:35:19', '2023-01-30 09:35:19'),
+(40, 3, 'Buku', '10000', 20, '2023-01-30 09:35:19', '2023-01-30 09:35:19');
 
 -- --------------------------------------------------------
 
@@ -220,6 +230,7 @@ CREATE TABLE `site` (
   `site` varchar(50) DEFAULT NULL,
   `id_area` int(11) DEFAULT NULL,
   `id_kota` int(11) DEFAULT NULL,
+  `alamat` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -228,10 +239,10 @@ CREATE TABLE `site` (
 -- Dumping data for table `site`
 --
 
-INSERT INTO `site` (`id_site`, `site`, `id_area`, `id_kota`, `created_at`, `updated_at`) VALUES
-(1, 'Mall Bali Galeria 5', 2, 2, '2023-01-26 09:35:14', '2023-01-26 02:36:56'),
-(3, 'Mall Jepara', 1, 1, '2023-01-26 02:11:52', '2023-01-26 02:11:52'),
-(4, 'Mall Taman Anggrek', 3, 3, '2023-01-27 12:50:35', '2023-01-27 12:56:24');
+INSERT INTO `site` (`id_site`, `site`, `id_area`, `id_kota`, `alamat`, `created_at`, `updated_at`) VALUES
+(1, 'Pondok Lensa Bali', 2, 2, 'Jl. Raya Kuta No.74A, Kuta', '2023-01-26 09:35:14', '2023-01-30 09:18:52'),
+(3, 'Pondok Lensa Bandung', 1, 1, 'Jl. Ciumbuleuit No.22, Hegarmanah, Kec. Cidadap, Kota Bandung, Jawa Barat', '2023-01-26 02:11:52', '2023-01-30 07:08:35'),
+(4, 'Pondok Lensa Jakarta', 3, 3, 'Jl. Tebet Raya No.45A, RT.2/RW.2, Tebet Tim., Kec. Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta', '2023-01-27 12:50:35', '2023-01-30 07:08:59');
 
 -- --------------------------------------------------------
 
@@ -279,7 +290,7 @@ CREATE TABLE `user_petty_cash` (
 
 INSERT INTO `user_petty_cash` (`id_user_petty_cash`, `nama`, `ktp`, `telpon`, `email`, `alamat`, `id_group_user`, `created_at`, `updated_at`) VALUES
 (1, 'Gde Dian Adi Juliartha', '12412512512512512', '0981283484', 'adijuliartha@gmail.com', 'Jalan Sedap Malam', 1, '2023-01-26 12:09:01', '2023-01-26 12:09:02'),
-(2, 'Meyan', '4124124125125125', '0128402840', 'meyan@gmail.com', 'Jalan Kemiri', 2, '2023-01-26 12:09:53', '2023-01-26 12:09:53');
+(2, 'Ni Putu Meyan Pratiwi', '4124124125125125', '0128402840', 'meyan@gmail.com', 'Jalan Kemiri', 2, '2023-01-26 12:09:53', '2023-01-30 09:25:47');
 
 --
 -- Indexes for dumped tables
@@ -359,7 +370,7 @@ ALTER TABLE `user_petty_cash`
 -- AUTO_INCREMENT for table `record_klaim_detail`
 --
 ALTER TABLE `record_klaim_detail`
-  MODIFY `id_klaim_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_klaim_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
