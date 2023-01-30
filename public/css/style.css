@@ -43,3 +43,12 @@ button.danger{color: #9d1818;}
 .form-report .form-group{margin-right: 20px;}
 .form-inline-pcd .form-group { margin-right: 20px;}
 .inv-baru{width: 100%;}
+.link-logout {margin: 9px 0px;display: block;font-size: 0.9rem;}
+.link-logout i {padding-right: 5px;text-decoration: none !important;}
+
+@media only screen and (max-width: 768px)  {
+    .top-bar.color-scheme-transparent{
+        display: none;
+    }
+
+}

@@ -111,8 +111,8 @@ $routes->get('/report-petty-cash-detail', 'Admin\ReportPettyCashDetail::index');
 $routes->post('/report-petty-cash/find-report', 'Admin\ReportPettyCash::getReport');
 $routes->get('/report-petty-cash', 'Admin\ReportPettyCash::index');
 
-$routes->get('/login', 'Login::index');
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Admin\RecordKlaim::index');
+//$routes->get('/', 'Home::index');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

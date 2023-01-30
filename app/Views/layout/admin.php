@@ -154,7 +154,7 @@
         -------------------->
         <div class="menu-mobile menu-activated-on-click color-scheme-dark">
           <div class="mm-logo-buttons-w">
-            <a class="mm-logo" href="index.html"><img src="<?php echo base_url(); ?>/img/logo.png"><span>Pondok Lensa</span></a>
+            <a class="mm-logo" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>/img/logo.png"><span>Pondok Lensa</span></a>
             <div class="mm-buttons">
               <div class="content-panel-open">
                 <div class="os-icon os-icon-grid-circles"></div>
@@ -165,7 +165,7 @@
             </div>
           </div>
           <div class="menu-and-user">
-            <div class="logged-user-w">
+            <!--<div class="logged-user-w">
               <div class="avatar-w">
                 <img alt="" src="<?php echo base_url(); ?>/img/avatar1.jpg">
               </div>
@@ -177,7 +177,7 @@
                   Administrator
                 </div>
               </div>
-            </div>
+            </div>-->
             <!--------------------
             START - Mobile Menu List
             -------------------->
@@ -216,7 +216,7 @@
                 </ul>
               </li>
               <li class="has-sub-menu">
-                <a href="index.html">
+                <a href="<?php echo base_url(); ?>">
                   <div class="icon-w">
                     <div class="os-icon os-icon-layout"></div>
                   </div>
@@ -251,6 +251,14 @@
                   </li>
                 </ul>
               </li>
+              <li>
+                <a href="/logout">
+                  <div class="icon-w">
+                    <div class="os-icon os-icon-signs-11"></div>
+                  </div>
+                  <span>Logout</span>
+                </a>
+              </li>
             </ul>
             <!--------------------
             END - Mobile Menu List
@@ -264,14 +272,14 @@
         -------------------->
         <div class="menu-w color-scheme-light color-style-transparent menu-position-side menu-side-left menu-layout-compact sub-menu-style-over sub-menu-color-bright selected-menu-color-light menu-activated-on-hover menu-has-selected-link">
           <div class="logo-w">
-            <a class="logo" href="index.html">
+            <a class="logo" href="<?php echo base_url(); ?>">
               <div class="logo-element"></div>
               <div class="logo-label">
                 Pondok Lensa
               </div>
             </a>
           </div>
-          <div class="logged-user-w avatar-inline">
+          <!--<div class="logged-user-w avatar-inline">
             <div class="logged-user-i">
               <div class="avatar-w">
                 <img alt="" src="<?php echo base_url(); ?>/img/avatar1.jpg">
@@ -313,7 +321,7 @@
                 </ul>
               </div>
             </div>
-          </div>
+          </div>-->
           <h1 class="menu-page-header">
             Page Header
           </h1>
@@ -593,18 +601,21 @@
             START - Top Menu Controls
             -------------------->
             <div class="top-menu-controls">
-              <div class="element-search autosuggest-search-activator">
+              <!--<div class="element-search autosuggest-search-activator">
                 <input placeholder="Start typing to search..." type="text">
-              </div>
+              </div>-->
+            <!--<a class="link-logout" href="/logout"><i class="os-icon os-icon-signs-11"></i><span>Logout</span></a>-->
+              <!---->
              <!--------------------
               START - User avatar and menu in secondary top menu
               -------------------->
               <div class="logged-user-w">
                 <div class="logged-user-i">
                   <div class="avatar-w">
-                    <img alt="" src="<?php echo base_url(); ?>/img/avatar1.jpg">
+                    <a class="link-logout" href="/logout"><i class="os-icon os-icon-signs-11"></i><span>Logout</span></a>
+                    <!--<img alt="" src="<?php echo base_url(); ?>/img/avatar1.jpg">-->
                   </div>
-                  <div class="logged-user-menu color-style-bright">
+                  <!--<div class="logged-user-menu color-style-bright">
                     <div class="logged-user-avatar-info">
                       <div class="avatar-w">
                         <img alt="" src="<?php echo base_url(); ?>/img/avatar1.jpg">
@@ -629,9 +640,10 @@
                         <a href="#"><i class="os-icon os-icon-signs-11"></i><span>Logout</span></a>
                       </li>
                     </ul>
-                  </div>
+                  </div>-->
                 </div>
               </div>
+
               <!--------------------
               END - User avatar and menu in secondary top menu
               -------------------->
@@ -642,22 +654,6 @@
           </div>
           <!--------------------
           END - Top Bar
-          --------------------><!--------------------
-          START - Breadcrumbs
-          -------------------->
-          <ul class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="index.html">Home</a>
-            </li>
-            <li class="breadcrumb-item">
-              <a href="index.html">Products</a>
-            </li>
-            <li class="breadcrumb-item">
-              <span>Laptop with retina screen</span>
-            </li>
-          </ul>
-          <!--------------------
-          END - Breadcrumbs
           -------------------->
           
 
