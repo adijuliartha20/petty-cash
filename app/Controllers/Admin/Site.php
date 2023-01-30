@@ -54,6 +54,12 @@ class Site extends BaseController
                                     'alpha_numeric' => 'format {field} salah'
                         ]
             ],
+            'alamat' => [
+                        'rules' => 'required',
+                        'errors' => [
+                                    'required' => '{field} harus diisi'
+                        ]
+            ]
             /*'id_area' => [
                     'rules' => 'required|alpha_numeric',
                         'errors' => [
@@ -71,7 +77,8 @@ class Site extends BaseController
     		'id_site' => $this->siteModel->setID(),
     		'site' => $this->request->getVar('site'),
             'id_kota' => $this->request->getVar('id_kota'),
-            'id_area' => $this->request->getVar('id_area')
+            'id_area' => $this->request->getVar('id_area'),
+            'alamat' => $this->request->getVar('alamat')
     	];
     	$this->siteModel->insert($data);
 
@@ -115,6 +122,12 @@ class Site extends BaseController
                                     'alpha_numeric' => 'format {field} salah'
                         ]
             ],
+            'alamat' => [
+                        'rules' => 'required',
+                        'errors' => [
+                                    'required' => '{field} harus diisi'
+                        ]
+            ]
             /*'id_area' => [
                     'rules' => 'required|alpha_numeric',
                         'errors' => [
@@ -132,7 +145,8 @@ class Site extends BaseController
     	$data = [
     		'site' => $this->request->getVar('site'),
             'id_kota' => $this->request->getVar('id_kota'),
-            'id_area' => $this->request->getVar('id_area')
+            'id_area' => $this->request->getVar('id_area'),
+            'alamat' => $this->request->getVar('alamat'),
     	];
     	
     	$this->siteModel->update($id,$data);

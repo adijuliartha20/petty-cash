@@ -210,6 +210,9 @@
                   <li>
                     <a href="/report-petty-cash">Petty Cash</a>
                   </li>
+                  <li>
+                    <a href="/report-petty-cash-detail">Petty Cash Detail</a>
+                  </li>
                 </ul>
               </li>
               <li class="has-sub-menu">
@@ -403,6 +406,13 @@
                   <div class="os-icon os-icon-file-text"></div>
                 </div>
                 <span>Petty Cash</span></a>              
+            </li>
+            <li>
+              <a href="/report-petty-cash-detail">
+                <div class="icon-w">
+                  <div class="os-icon os-icon-file-text"></div>
+                </div>
+                <span>Petty Cash Detail</span></a>              
             </li>
 
             <li class="sub-header">
@@ -694,6 +704,9 @@
     <script src="<?php echo base_url(); ?>/js/script.js?version=1.0"></script>
     <?php if(isset($appName) && $appName=='report') :?>
       <script src="<?php echo base_url(); ?>/js/scriptReport.js?version=1.0"></script>
+    <?php endif;?>
+    <?php if(isset($appName) && $appName=='report-detail') :?>
+      <script src="<?php echo base_url(); ?>/js/scriptReportDetail.js?version=1.0"></script>
     <?php endif;?>  
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

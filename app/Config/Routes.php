@@ -105,6 +105,9 @@ $routes->get('/record-klaim/list-assets/(:num)', 'Admin\RecordKlaim::getListAsse
 $routes->delete('/record-klaim/(:num)', 'Admin\RecordKlaim::delete/$1');
 $routes->get('/record-klaim', 'Admin\RecordKlaim::index');
 
+$routes->post('/report-petty-cash-detail/find-report', 'Admin\ReportPettyCashDetail::getReport');
+$routes->get('/report-petty-cash-detail', 'Admin\ReportPettyCashDetail::index');
+
 $routes->post('/report-petty-cash/find-report', 'Admin\ReportPettyCash::getReport');
 $routes->get('/report-petty-cash', 'Admin\ReportPettyCash::index');
 

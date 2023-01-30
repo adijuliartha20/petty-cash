@@ -36,10 +36,13 @@ class RecordKlaimModel extends Model
 
     //REPORT
     public function getListDataKlaim($status,$start,$end){
-        //return $this->where("tanggal BETWEEN '{$start}' and '{$end}'")->where("status",$status)->findAll(); 
-
         return $this->db->table('record_klaim k')->select('k.id_klaim, k.tanggal, k.total, s.site, p.petty_cash_group type, u.nama')->join('site s','k.id_site=s.id_site')->join('petty_cash_group p','k.id_petty_cash_group=p.id_petty_cash_group')->join('user_petty_cash u','k.id_user_petty_cash=u.id_user_petty_cash')->where("tanggal BETWEEN '{$start}' and '{$end}'")->where('status',$status)->orderBy('tanggal','ASC')->get()->getResultArray();
 
+    }
+
+    public function getDataKlaimReport($status,$start,$end){
+        $data =  $this->db->table('record_klaim k')->select('k.id_klaim, k.tanggal, k.total, s.site, s.alamat, a.area, kt.kota, p.petty_cash_group type, u.nama, u.telpon')->join('site s','k.id_site=s.id_site','left')->join('area a','a.id_area=s.id_area','left')->join('kota kt','s.id_kota=kt.id_kota','left')->join('petty_cash_group p','k.id_petty_cash_group=p.id_petty_cash_group','left')->join('user_petty_cash u','k.id_user_petty_cash=u.id_user_petty_cash','left')->where("tanggal BETWEEN '{$start}' and '{$end}'")->where('status',$status)->orderBy('tanggal','ASC')->get()->getResultArray();
+        return $data;
     }
 
 }

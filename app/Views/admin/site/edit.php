@@ -47,6 +47,11 @@
                   <?php endforeach; ?> 
               </select>
             </div>
+            <div class="form-group">
+              <label for=""> Alamat</label>
+              <input class="form-control" name="alamat" data-error="Alamat wajib diisi"  placeholder="Masukkan alamat site" required="required" value="<?php echo (isset($dt['alamat'])? $dt['alamat']:''); ?>">
+              <div class="help-block form-text with-errors form-control-feedback"></div>
+            </div>
             <div class="form-buttons-w">
               <button class="btn btn-primary" type="submit">Simpan</button>
             </div>

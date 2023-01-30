@@ -56,39 +56,6 @@
                       Tidak ada data yang ditampilkan
                     </td>
                   </tr>
-                  <!--<tr>
-                    <td>01/04/2023</td>
-                    <td class="text-center" colspan="3">Kas Masuk</td>
-                    <td>5.000.000</td>
-                    <td></td>                    
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>02/04/2023</td>
-                    <td>Pondok Lensa Bali</td>
-                    <td>ATK</td>
-                    <td>Adi Juliartha</td>
-                    <td></td>
-                    <td>700.000</td>
-                    <td>4.300.000</td>
-                  </tr>
-                  <tr>
-                    <td>03/04/2023</td>
-                    <td>Pondok Lensa Bandung</td>
-                    <td>Rapat Luar Kota</td>
-                    <td>Adi Juliartha</td>
-                    <td></td>
-                    <td>500.000</td>
-                    <td>3.800.000</td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th colspan="4"><h6>Total</h6></th>
-                    <th><h6>5.000.000</h6></th>
-                    <td><h6>1.200.000</h6></td>
-                    <th><h6>3.800.000</h6></th>
-                  </tr>-->
                 </tfoot>
               </table>
               <!--------------------

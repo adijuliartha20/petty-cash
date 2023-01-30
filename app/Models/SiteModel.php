@@ -11,7 +11,7 @@ class SiteModel extends Model
     protected $useTimestamps = true;
 
     //tambahkan property disini untuk save
-    protected $allowedFields = ['id_site','site','id_area','id_kota'];
+    protected $allowedFields = ['id_site','site','id_area','id_kota','alamat'];
 
     public function getData($slug=false,$join=false){
 		if($slug==false){
