@@ -38,12 +38,12 @@
               <!--------------------
               START - Basic Table
               -------------------->
-              <table class="table table-striped table-bordered">
+              <table id="tableReport" class="table table-striped table-bordered">
                 <thead>
                   <tr>
                     <th>Tanggal</th>
-                    <th>Unit</th>
-                    <th>Type Pembelian</th>
+                    <th>Site</th>
+                    <th>Petty Cash Group</th>
                     <th>Oleh</th>
                     <th class="text-center">Debit</th>
                     <th class="text-center">Kredit</th>
@@ -51,7 +51,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr id="defaultRow">
+                    <td colspan="7" class="text-center">
+                      Tidak ada data yang ditampilkan
+                    </td>
+                  </tr>
+                  <!--<tr>
                     <td>01/04/2023</td>
                     <td class="text-center" colspan="3">Kas Masuk</td>
                     <td>5.000.000</td>
@@ -83,7 +88,7 @@
                     <th><h6>5.000.000</h6></th>
                     <td><h6>1.200.000</h6></td>
                     <th><h6>3.800.000</h6></th>
-                  </tr>
+                  </tr>-->
                 </tfoot>
               </table>
               <!--------------------

@@ -692,6 +692,9 @@
     <script src="<?php echo base_url(); ?>/js/demo_customizer.js?version=4.5.0"></script>
     <script src="<?php echo base_url(); ?>/js/main.js?version=4.5.0"></script>
     <script src="<?php echo base_url(); ?>/js/script.js?version=1.0"></script>
+    <?php if(isset($appName) && $appName=='report') :?>
+      <script src="<?php echo base_url(); ?>/js/scriptReport.js?version=1.0"></script>
+    <?php endif;?>  
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

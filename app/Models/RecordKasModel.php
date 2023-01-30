@@ -27,4 +27,8 @@ class RecordKasModel extends Model
     	return $no;
     }
 
+    public function getListDataKas($status,$start,$end){
+        return $this->where("tanggal BETWEEN '{$start}' and '{$end}'")->where("status",$status)->orderBy('tanggal','ASC')->findAll();        
+    }
+
 }
