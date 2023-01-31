@@ -156,17 +156,18 @@ class RecordKlaim extends BaseController
     }
 
     public function delete($id){
+        $this->recordKlaimDetailModel->where('id_klaim',$id)->delete();
+        $this->recordKlaimModel->delete($id);
+
         //get data
-        $data = $this->assetsModel->getDataByPost($id);
+        $data = $this->assetsModel->getDataByPost($id,'klaim');
         //delete asset
         foreach ($data as $dt) {
             $id = $dt['id_asset'];
             if($this->assetsModel->where('id_asset',$id)->delete()){
-                unlink('../public/assets/reimburse/'.$dt['nama']);
+                unlink('../public/assets/klaim/'.$dt['nama']);
             }
-        }       
-
-        $this->recordReimburseModel->delete($id);
+        }               
         return redirect()->to(base_url().'/'.$this->appName.'');
     }
 
@@ -253,7 +254,7 @@ class RecordKlaim extends BaseController
         $dt = [];
         $dt['status'] = 'success';
 
-        $data = $this->assetsModel->getDataByPost($slug);
+        $data = $this->assetsModel->getDataByPost($slug,'klaim');
         if(!empty($data)){
             $dt['listFile'] = $data;
         }

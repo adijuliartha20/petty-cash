@@ -26,7 +26,7 @@
                 ?>
                 <?php foreach ($klaim as $k):?>
                   <option <?php echo ($k['id_klaim']==$id_klaim? 'selected':'') ?>  value="<?php echo $k['id_klaim']; ?>">
-                    <?php echo '['.date('d M Y',strtotime($k['tanggal'])).'] - '.$k['site'].' - '.$k['type'].' - '.$k['nama']; ?>
+                    <?php echo '['.date('d M Y',strtotime($k['tanggal'])).'] - '.$k['site'].' - '.$k['type'].' - '.$k['nama'].' - '.number_format(($k['total']-$k['bayar']), 0, '', '.'); ?>
                   </option>
                 <?php endforeach; ?> 
               </select>
@@ -62,6 +62,12 @@
           <?php if(session()->getFlashdata('pesan')) : ?>
           <div class="alert alert-success" role="alert">
               <?php echo session()->getFlashdata('pesan');?>
+          </div>
+          <?php  endif; ?>
+
+          <?php if(session()->getFlashdata('pesanError')) : ?>
+          <div class="alert alert-success" role="alert">
+              <?php echo session()->getFlashdata('pesanError');?>
           </div>
           <?php  endif; ?>
       </div>

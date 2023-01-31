@@ -34,7 +34,7 @@ class ReportPettyCashDetail extends BaseController
 
     public function getReport(){
         //get data klaim
-        $status = 0;
+        $status = 1;
         $mulai  ='';
         $dtmulai = explode('/',$this->request->getVar('mulai'));   
         if(!empty($dtmulai)) $mulai = $dtmulai[2].'-'.$dtmulai[1].'-'.$dtmulai[0].' 00:00:00';

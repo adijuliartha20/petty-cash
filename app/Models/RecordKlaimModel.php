@@ -24,7 +24,15 @@ class RecordKlaimModel extends Model
     }
 
     public function getDataKlaim(){
-        return $this->db->table('record_klaim k')->select('k.id_klaim, k.tanggal, s.site, p.petty_cash_group type, u.nama')->join('site s','k.id_site=s.id_site')->join('petty_cash_group p','k.id_petty_cash_group=p.id_petty_cash_group')->join('user_petty_cash u','k.id_user_petty_cash=u.id_user_petty_cash')->where('status',0)->get()->getResultArray();
+        return $this->db->table('record_klaim k')->select('k.id_klaim, k.tanggal, k.total, s.site, p.petty_cash_group type, u.nama')->join('site s','k.id_site=s.id_site')->join('petty_cash_group p','k.id_petty_cash_group=p.id_petty_cash_group')->join('user_petty_cash u','k.id_user_petty_cash=u.id_user_petty_cash')->where('status',0)->get()->getResultArray();
+    }
+
+    public function getDataKlaimNew(){
+        return $this->db->query("SELECT rk.id_klaim, rk.tanggal, s.site, pcg.petty_cash_group type, u.nama, rk.total, (select sum(rr.jumlah) from record_reimburse rr where rk.id_klaim = rr.id_klaim ) bayar FROM `record_klaim` rk left join site s on rk.id_site = s.id_site left join petty_cash_group pcg on rk.id_petty_cash_group = pcg.id_petty_cash_group left join user_petty_cash u on rk.id_user_petty_cash = u.id_user_petty_cash where rk.status = 0")->getResult('array') ;
+    }
+
+    public function getTotal($slug){
+        return $this->select('total')->where('id_klaim',$slug)->first();
     }
 
     public function setID(){

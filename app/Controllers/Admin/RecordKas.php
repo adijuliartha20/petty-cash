@@ -165,7 +165,7 @@ class RecordKas extends BaseController
 
     public function delete($id){
          //get data
-        $data = $this->assetsModel->getDataByPost($id);
+        $data = $this->assetsModel->getDataByPost($id,'kas');
         //delete asset
         foreach ($data as $dt) {
             $id = $dt['id_asset'];
@@ -260,7 +260,7 @@ class RecordKas extends BaseController
         $dt = [];
         $dt['status'] = 'success';
 
-        $data = $this->assetsModel->getDataByPost($slug);
+        $data = $this->assetsModel->getDataByPost($slug,'kas');
         if(!empty($data)){
             $dt['listFile'] = $data;
         }

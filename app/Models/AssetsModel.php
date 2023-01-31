@@ -27,8 +27,8 @@ class AssetsModel extends Model
     	return $no;
     }
 
-    public function getDataByPost($slug){
-        return $this->select('id_asset,nama')->where('id_data',$slug)->findAll();        
+    public function getDataByPost($slug,$type=''){
+        return $this->select('id_asset,nama')->where('id_data',$slug)->where('tipe',$type)->findAll();        
     }
 
 }

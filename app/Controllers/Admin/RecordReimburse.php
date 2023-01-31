@@ -22,7 +22,7 @@ class RecordReimburse extends BaseController
     public function index(){
     	$data = [
     		'title' => $this->title,
-    		'data'=> $this->recordReimburseModel->getData(),
+    		'data'=> $this->recordReimburseModel->getDataRemburceWithDetail(),
             'app'=> $this->appName
     	];
         return view('admin/'.$this->appName.'/index', $data);
@@ -37,14 +37,6 @@ class RecordReimburse extends BaseController
 
         $this->recordReimburseModel->insert($data);
         return redirect()->to(base_url().'/'.$this->appName.'/edit/'.$id);
-
-    	/*$data = [
-    		'title' => 'Tambah '.$this->title,
-    		'action' => base_url().'/'.$this->appName.'/save',
-            'dt' => [],
-            'klaim'=> $this->recordKlaimModel->getDataKlaim()
-    	];
-    	return view('admin/'.$this->appName.'/edit',$data);*/
     }
 
     public function save(){
@@ -107,7 +99,8 @@ class RecordReimburse extends BaseController
     		'title' => $this->title,
     		'action' => base_url().'/'.$this->appName.'/update',    		
     		'dt'=> $this->recordReimburseModel->getData($slug),
-            'klaim'=> $this->recordKlaimModel->getDataKlaim(),
+            //'klaim'=> $this->recordKlaimModel->getDataKlaim(),
+            'klaim'=> $this->recordKlaimModel->getDataKlaimNew(),
             'upload' => base_url().'/'.$this->appName.'/upload',
             'deleteFile' => base_url().'/'.$this->appName.'/delete-file',
             'actGetFile' => base_url().'/'.$this->appName.'/list-assets',
@@ -165,34 +158,108 @@ class RecordReimburse extends BaseController
             $tanggal = $dttgl[2].'-'.$dttgl[1].'-'.$dttgl[0].' 00:00:00';
         }
 
+        $id_klaim = $this->request->getVar('id_klaim');
+        $jumlah = (int)$this->request->getVar('jumlah');
     	$data = [
-            'id_klaim'    => $this->request->getVar('id_klaim'),
+            'id_klaim'    => $id_klaim,
             'tanggal'     => $tanggal,
-            'jumlah'      => $this->request->getVar('jumlah'),
-            'bukti_reimburse'   => $this->request->getVar('bukti_reimburse'),
+            'jumlah'      => $jumlah,
             'id_user'     => 1
     	];
     	
-    	$this->recordReimburseModel->update($id,$data);
-    	session()->setFlashdata('pesan','Data Reimburse tanggal '.$this->request->getVar('tanggal').' berhasil diupdate.');
+        
+        //validate for status
 
+        $msg = '';
+        $klaim = $this->recordKlaimModel->getTotal($id_klaim);
+        $totalKlaim = $klaim['total'];
+        $reimburseSebelumnya = $this->recordReimburseModel->getDataByKlaim($id_klaim,$id);
+        
+        $totalReimburseSebelumnya = (int)$reimburseSebelumnya[0]['totalBayar'];
+        $totalBayarSekarang = $jumlah + $totalReimburseSebelumnya;
+
+
+        /*if($totalKlaim == $totalBayarSekarang){
+            echo 'sama';
+        }else{
+            echo $totalBayarSekarang.' < '.$totalKlaim;    
+        }*/
+        
+        //get id_klaim old bila ganti klaim
+        //get data klaim lama
+        $dtReimburse = $this->recordReimburseModel->getData($id);
+        $idKlaimOld = $dtReimburse['id_klaim'];
+        //dd($reimburseSebelumnya);
+
+
+        if($totalBayarSekarang > $totalKlaim){
+            $msg = 'Jumlah reimburse lebih besar dari klaim, tolong input jumlah sama dengan klaim atau lebih kecil';
+            session()->setFlashdata('pesanError',$msg);    
+        }else{
+            $msg = '';
+            if($totalKlaim == $totalBayarSekarang){//update status jadi lunas
+                $status = ['status'=>1];
+                $this->recordKlaimModel->update($id_klaim,$status);
+                $msg = 'Data Reimburse tanggal '.$this->request->getVar('tanggal').' berhasil diupdate dan Klaim sudah lunas.';
+            }else {
+                $kurang = number_format(($totalKlaim - $totalBayarSekarang), 0, '', '.');
+                $msg = 'Data Reimburse tanggal '.$this->request->getVar('tanggal').' berhasil diupdate dan klaim masih kurang lagi '.$kurang;
+            }
+
+            $this->recordReimburseModel->update($id,$data);//simpan data
+            if($id_klaim!= $idKlaimOld && $idKlaimOld!=''){
+                $this->calculateKlaim($idKlaimOld);
+            }
+            session()->setFlashdata('pesan',$msg);
+        }
     	return redirect()->to(base_url().'/'.$this->appName.'/edit/'.$id);
     }
 
+
+    public function changeStatusKlaim($id){
+
+    }
+
     public function delete($id){
+        //get data klaim lama
+        $dtReimburse = $this->recordReimburseModel->getData($id);
+        $idKlaim = '';
+        if(isset($dtReimburse['id_klaim'])) $idKlaim = $dtReimburse['id_klaim'];
+
+        $this->recordReimburseModel->delete($id);//delete dulu
+        if(!empty($idKlaim)) $this->calculateKlaim($idKlaim);//baru calculate lagi
+
         //get data
-        $data = $this->assetsModel->getDataByPost($id);
+        $data = $this->assetsModel->getDataByPost($id,'reimburse');
         //delete asset
         foreach ($data as $dt) {
             $id = $dt['id_asset'];
             if($this->assetsModel->where('id_asset',$id)->delete()){
                 unlink('../public/assets/reimburse/'.$dt['nama']);
             }
-        }       
-
-        $this->recordReimburseModel->delete($id);
+        }
         return redirect()->to(base_url().'/'.$this->appName.'');
     }
+
+
+    public function calculateKlaim($idKlaim){
+        $dtKlaim = $this->recordKlaimModel->getData($idKlaim);
+
+        $dtReimburse = $this->recordReimburseModel->getDataByKlaim($idKlaim,'');
+
+        $totalBayar = $dtReimburse[0]['totalBayar'];
+        $totalKlaim = (isset($dtKlaim['total'])? $dtKlaim['total'] : 0);
+
+        $status = 0;
+        if($totalBayar>=$totalKlaim){
+            $status = 1;
+        }
+
+        $data = ['status'=>$status];
+
+        $this->recordKlaimModel->update($idKlaim,$data);
+    }
+
 
     public function upload(){
         $data = array();
@@ -277,7 +344,7 @@ class RecordReimburse extends BaseController
         $dt = [];
         $dt['status'] = 'success';
 
-        $data = $this->assetsModel->getDataByPost($slug);
+        $data = $this->assetsModel->getDataByPost($slug,'reimburse');
         if(!empty($data)){
             $dt['listFile'] = $data;
         }

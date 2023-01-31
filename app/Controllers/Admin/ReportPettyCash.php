@@ -45,7 +45,7 @@ class ReportPettyCash extends BaseController
             return redirect()->to(base_url().'/'.$this->appName.'/create')->withInput()->with('validation',$validation);
         }
         //klaim sudah direimbust
-        $status = 0;//ubah nanti
+        $status = 1;//status sudah terbayarkan
         $mulai  ='';
         $dtmulai = explode('/',$this->request->getVar('mulai'));   
         if(!empty($dtmulai)) $mulai = $dtmulai[2].'-'.$dtmulai[1].'-'.$dtmulai[0].' 00:00:00';

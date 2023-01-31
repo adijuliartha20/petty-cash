@@ -20,7 +20,7 @@
                           <th>Tanggal</th>
                           <th>Jumlah</th>
                           <th>Sumber</th>
-                          <th>Oleh</th>
+                          <!--<th>Oleh</th>-->
                           <th>Dibuat</th>
                           <th>Diubah</th>
                           <th></th>
@@ -32,7 +32,7 @@
                           <th>Tanggal</th>
                           <th>Jumlah</th>
                           <th>Sumber</th>
-                          <th>Oleh</th>
+                          <!--<th>Oleh</th>-->
                           <th>Dibuat</th>
                           <th>Diubah</th>
                           <th></th>
@@ -44,12 +44,24 @@
                             foreach($data as $dt) :?>
                           <tr>
                             <td><?php echo $i++; ?></td>
-                            <td><?php echo $dt['tanggal'] ?></td>
+                            <td><?php 
+                                  $date=date_create($dt['tanggal']);
+                                  echo date_format($date,"d F Y");
+                                  ?>
+                            </td>
                             <td><?php echo number_to_currency((!empty($dt['jumlah'])? $dt['jumlah']: 0), 'IDR', 'id_ID', 0);?></td>
                             <td><?php echo $dt['sumber'] ?></td>
-                            <td><?php echo $dt['id_user'] ?></td>
-                            <td><?php echo $dt['created_at'] ?></td>
-                            <td><?php echo $dt['updated_at'] ?></td>
+                            <!--<td><?php echo $dt['id_user'] ?></td>-->
+                            <td><?php 
+                                  $created_at = date_create($dt['created_at']);
+                                  echo date_format($created_at,"d-m-Y H:i:s");
+                                  ?>
+                            </td>
+                            <td><?php 
+                                  $updated_at = date_create($dt['updated_at']);
+                                  echo date_format($updated_at,"d-m-Y H:i:s");
+                                  ?>
+                            </td>
                             <td class="row-actions">
                               <a href="<?php echo base_url().'/'.$app.'/edit/'.$dt['id_kas']; ?>"><i class="os-icon os-icon-ui-49"></i></a>
                               <form action="<?php echo base_url().'/'.$app.'/'.$dt['id_kas']; ?>" method="post" class="form-action-table">

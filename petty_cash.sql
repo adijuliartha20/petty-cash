@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2023 at 03:21 PM
+-- Generation Time: Jan 31, 2023 at 12:43 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -65,9 +65,14 @@ CREATE TABLE `assets` (
 --
 
 INSERT INTO `assets` (`id_asset`, `nama`, `id_data`, `tipe`, `id_user`, `created_at`, `updated_at`) VALUES
-(1, '1675052611_7f2e30f23d3bfa623f32.jpg', 2, 'klaim', 1, '2023-01-30 04:23:31', '2023-01-30 04:23:31'),
-(2, '1675052657_5545f9b809f1af076fb6.jpg', 3, 'klaim', 1, '2023-01-30 04:24:17', '2023-01-30 04:24:17'),
-(3, '1675052696_d446697a1aa02a049598.jpg', 4, 'klaim', 1, '2023-01-30 04:24:56', '2023-01-30 04:24:56');
+(1, '1675161743_19f463e72521eb5e86ca.jpg', 1, 'kas', 1, '2023-01-31 10:42:23', '2023-01-31 10:42:23'),
+(2, '1675161771_15828f1b68a20de40f1b.jpg', 2, 'kas', 1, '2023-01-31 10:42:51', '2023-01-31 10:42:51'),
+(3, '1675162427_2ae8e67df59377fc1d8e.jpg', 1, 'klaim', 1, '2023-01-31 10:53:47', '2023-01-31 10:53:47'),
+(4, '1675162483_2bc4bc3ee8de83115d7e.jpg', 2, 'klaim', 1, '2023-01-31 10:54:43', '2023-01-31 10:54:43'),
+(5, '1675164799_10cc57c56dd483ed5140.jpg', 1, 'reimburse', 1, '2023-01-31 11:33:19', '2023-01-31 11:33:19'),
+(6, '1675164827_8e9b4636b77b5cdc2409.jpg', 2, 'reimburse', 1, '2023-01-31 11:33:47', '2023-01-31 11:33:47'),
+(7, '1675164877_da453142b00029a46d06.jpg', 3, 'reimburse', 1, '2023-01-31 11:34:37', '2023-01-31 11:34:37'),
+(8, '1675164952_0f03510ee1f8c5672481.jpg', 3, 'klaim', 1, '2023-01-31 11:35:52', '2023-01-31 11:35:52');
 
 -- --------------------------------------------------------
 
@@ -140,7 +145,11 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (1, '::1', 'fsafasf', NULL, '2023-01-30 12:56:42', 0),
 (2, '::1', 'pondoklensa@gmail.com', 4, '2023-01-30 13:12:09', 1),
 (3, '::1', 'pondoklensa@gmail.com', 4, '2023-01-30 14:02:19', 1),
-(4, '::1', 'pondoklensa@gmail.com', 4, '2023-01-30 14:14:55', 1);
+(4, '::1', 'pondoklensa@gmail.com', 4, '2023-01-30 14:14:55', 1),
+(5, '::1', 'pondoklensa@gmail.com', 4, '2023-01-30 23:29:04', 1),
+(6, '::1', 'pondoklensa@gmail.com', 4, '2023-01-31 01:31:25', 1),
+(7, '::1', 'pondoklensa@gmail.com', 4, '2023-01-31 01:32:36', 1),
+(8, '::1', 'pondoklensa@gmail.com', 4, '2023-01-31 04:44:44', 1);
 
 -- --------------------------------------------------------
 
@@ -257,9 +266,9 @@ CREATE TABLE `petty_cash_group` (
 --
 
 INSERT INTO `petty_cash_group` (`id_petty_cash_group`, `petty_cash_group`, `created_at`, `updated_at`) VALUES
-(1, 'Group Petty 1', '2023-01-26 11:52:06', '2023-01-26 04:02:06'),
+(1, 'Konsumsi', '2023-01-26 11:52:06', '2023-01-31 06:01:55'),
 (2, 'Perlengkapan Kantor', '2023-01-26 11:52:15', '2023-01-28 23:14:46'),
-(3, 'Group Petty 3', '2023-01-26 03:58:52', '2023-01-26 03:58:52');
+(3, 'Telpon', '2023-01-26 03:58:52', '2023-01-31 06:02:47');
 
 -- --------------------------------------------------------
 
@@ -284,7 +293,8 @@ CREATE TABLE `record_kas` (
 --
 
 INSERT INTO `record_kas` (`id_kas`, `tanggal`, `jumlah`, `sumber`, `bukti_kas`, `id_user`, `status`, `created_at`, `updated_at`) VALUES
-(1, '2023-01-01 00:00:00', '40000000', 'BCA', NULL, 1, 1, '2023-01-28 00:40:43', '2023-01-28 01:33:38');
+(1, '2023-01-01 00:00:00', '5000000', 'BCA', NULL, 1, 1, '2023-01-31 10:42:11', '2023-01-31 10:42:25'),
+(2, '2023-01-17 00:00:00', '1000000', 'Bank Mandiri', NULL, 1, 1, '2023-01-31 10:42:33', '2023-01-31 10:42:52');
 
 -- --------------------------------------------------------
 
@@ -310,10 +320,9 @@ CREATE TABLE `record_klaim` (
 --
 
 INSERT INTO `record_klaim` (`id_klaim`, `tanggal`, `total`, `id_site`, `id_petty_cash_group`, `id_user_petty_cash`, `id_user`, `status`, `created_at`, `updated_at`) VALUES
-(1, '2023-01-20 15:23:01', '15000000', 1, 2, 1, 1, 0, '2023-01-27 15:23:40', '2023-01-27 15:23:41'),
-(2, '2023-01-27 15:23:53', '1000000', 1, 2, 2, 1, 0, '2023-01-27 15:24:21', '2023-01-27 15:24:21'),
-(3, '2023-01-30 00:00:00', '346000', 4, 2, 2, 1, 0, '2023-01-30 04:14:56', '2023-01-30 09:35:19'),
-(4, '2023-01-30 00:00:00', '15000', 1, 2, 2, 1, 0, '2023-01-30 04:24:36', '2023-01-30 08:52:11');
+(1, '2023-01-03 00:00:00', '203000', 1, 1, 1, 1, 1, '2023-01-31 10:52:59', '2023-01-31 11:33:55'),
+(2, '2023-01-09 00:00:00', '210000', 3, 2, 2, 1, 1, '2023-01-31 10:53:59', '2023-01-31 11:34:44'),
+(3, '2023-01-12 00:00:00', '500000', 1, 3, 1, 1, 0, '2023-01-31 11:35:23', '2023-01-31 11:36:09');
 
 -- --------------------------------------------------------
 
@@ -336,11 +345,12 @@ CREATE TABLE `record_klaim_detail` (
 --
 
 INSERT INTO `record_klaim_detail` (`id_klaim_detail`, `id_klaim`, `nama`, `harga`, `jumlah`, `created_at`, `updated_at`) VALUES
-(36, 4, 'Buku', '5000', 2, '2023-01-30 08:52:11', '2023-01-30 08:52:11'),
-(37, 4, 'Pensil', '1000', 5, '2023-01-30 08:52:11', '2023-01-30 08:52:11'),
-(38, 3, 'Kertas A4', '24000', 4, '2023-01-30 09:35:19', '2023-01-30 09:35:19'),
-(39, 3, 'Pulpen', '5000', 10, '2023-01-30 09:35:19', '2023-01-30 09:35:19'),
-(40, 3, 'Buku', '10000', 20, '2023-01-30 09:35:19', '2023-01-30 09:35:19');
+(47, 1, 'Aqua Gelas Dus', '25000', 3, '2023-01-31 10:53:49', '2023-01-31 10:53:49'),
+(48, 1, 'Aqua Galon', '16000', 8, '2023-01-31 10:53:49', '2023-01-31 10:53:49'),
+(49, 2, 'Pulpen', '8000', 20, '2023-01-31 10:54:52', '2023-01-31 10:54:52'),
+(50, 2, 'Kertas A4', '25000', 2, '2023-01-31 10:54:52', '2023-01-31 10:54:52'),
+(51, 3, 'Service Hp', '1', 200000, '2023-01-31 11:36:09', '2023-01-31 11:36:09'),
+(52, 3, 'Pulsa', '100000', 3, '2023-01-31 11:36:09', '2023-01-31 11:36:09');
 
 -- --------------------------------------------------------
 
@@ -353,7 +363,6 @@ CREATE TABLE `record_reimburse` (
   `id_klaim` int(11) DEFAULT NULL,
   `tanggal` datetime DEFAULT NULL,
   `jumlah` decimal(10,0) DEFAULT NULL,
-  `bukti_reimburse` varchar(50) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -363,9 +372,10 @@ CREATE TABLE `record_reimburse` (
 -- Dumping data for table `record_reimburse`
 --
 
-INSERT INTO `record_reimburse` (`id_reimburse`, `id_klaim`, `tanggal`, `jumlah`, `bukti_reimburse`, `id_user`, `created_at`, `updated_at`) VALUES
-(1, 1, '2023-01-01 00:00:00', '160991', '3124124124', 1, '2023-01-27 07:45:11', '2023-01-27 07:45:11'),
-(3, 1, '2023-01-01 00:00:00', '160991', NULL, 1, '2023-01-28 13:09:43', '2023-01-28 13:18:18');
+INSERT INTO `record_reimburse` (`id_reimburse`, `id_klaim`, `tanggal`, `jumlah`, `id_user`, `created_at`, `updated_at`) VALUES
+(1, 1, '2023-01-01 00:00:00', '100000', 1, '2023-01-31 11:33:09', '2023-01-31 11:33:23'),
+(2, 1, '2023-01-01 00:00:00', '103000', 1, '2023-01-31 11:33:34', '2023-01-31 11:33:56'),
+(3, 2, '2023-01-11 00:00:00', '210000', 1, '2023-01-31 11:34:07', '2023-01-31 11:34:44');
 
 -- --------------------------------------------------------
 
@@ -421,7 +431,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(4, 'pondoklensa@gmail.com', 'pondoklensa', '$2y$10$zgsnRhVpFt5etpHV/LwfL.t/5aO9NdWa9g1O1QRqKC/WSgApz/uKq', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2023-01-30 13:12:00', '2023-01-30 13:12:00', NULL);
+(4, 'pondoklensa@gmail.com', 'pondoklensa', '$2y$10$zgsnRhVpFt5etpHV/LwfL.t/5aO9NdWa9g1O1QRqKC/WSgApz/uKq', 'ec3d9715083f2bbbe15d98b9c912b263', NULL, '2023-01-31 01:41:16', NULL, NULL, NULL, 1, 0, '2023-01-30 13:12:00', '2023-01-31 00:41:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -636,7 +646,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -666,7 +676,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `record_klaim_detail`
 --
 ALTER TABLE `record_klaim_detail`
-  MODIFY `id_klaim_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_klaim_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `users`

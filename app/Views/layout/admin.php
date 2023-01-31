@@ -154,7 +154,7 @@
         -------------------->
         <div class="menu-mobile menu-activated-on-click color-scheme-dark">
           <div class="mm-logo-buttons-w">
-            <a class="mm-logo" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>/img/logo.png"><span>Pondok Lensa</span></a>
+            <a class="mm-logo" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>/img/logo.png"><span>Petty Cash</span></a>
             <div class="mm-buttons">
               <div class="content-panel-open">
                 <div class="os-icon os-icon-grid-circles"></div>
@@ -275,7 +275,7 @@
             <a class="logo" href="<?php echo base_url(); ?>">
               <div class="logo-element"></div>
               <div class="logo-label">
-                Pondok Lensa
+                Petty Cash
               </div>
             </a>
           </div>

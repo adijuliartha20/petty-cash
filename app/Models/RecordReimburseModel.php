@@ -26,4 +26,12 @@ class RecordReimburseModel extends Model
     	if(isset($data['id_reimburse'] )) $no = $data['id_reimburse'] + 1;
     	return $no;
     }
+
+    public function getDataByKlaim($slug,$id_reimburse){
+        return $this->select('sum(jumlah) totalBayar')->where('id_klaim',$slug)->where('id_reimburse!=',$id_reimburse)->findAll();
+    }
+
+    public function getDataRemburceWithDetail($slug=false){
+        return $this->db->table('record_reimburse r')->select('r.id_reimburse, r.id_klaim, r.tanggal, r.jumlah, r.created_at, r.updated_at, r.id_user, s.site, rk.total')->join('record_klaim rk', 'r.id_klaim=rk.id_klaim','left')->join('site s','rk.id_site=s.id_site','left')->get()->getResultArray();
+    }
 }
